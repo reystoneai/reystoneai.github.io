@@ -20,8 +20,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);
 /* FLOATING LOGO */
 .floating-logo{position:fixed;top:24px;left:32px;z-index:200;transition:opacity 0.3s;opacity:0;pointer-events:none;}
 .floating-logo.visible{opacity:1;pointer-events:auto;}
-.floating-logo img{height:44px;width:auto;transition:filter 0.5s ease;}
-.floating-logo img.light{filter:brightness(0) invert(1);}
+/* #3 FIX: mix-blend-mode so logo blends on any background; proper fix is transparent PNG */
+.floating-logo img{height:53px;width:auto;transition:filter 0.5s ease;mix-blend-mode:multiply;}
+.floating-logo img.light{filter:brightness(0) invert(1);mix-blend-mode:normal;}
 
 /* FLOATING CTA */
 .floating-cta{position:fixed;top:20px;right:32px;z-index:200;animation:slideInBtn 0.7s cubic-bezier(0.22,1,0.36,1) both;}
@@ -38,7 +39,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);
 /* HERO */
 #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:100px 40px 80px;position:relative;overflow:hidden;}
 .hero-logo-header{position:absolute;top:0;left:0;right:0;display:flex;justify-content:center;align-items:center;padding:32px 40px;z-index:10;}
-.hero-logo-img{height:77px;width:auto;}
+/* #2 FIX: 20% bigger logo — was 77px, now 92px */
+.hero-logo-img{height:92px;width:auto;}
 .hero-content{position:relative;z-index:2;max-width:1120px;margin:0 auto;width:100%;text-align:center;display:flex;flex-direction:column;align-items:center;}
 .hero-h1{font-family:'Playfair Display',serif;font-size:clamp(42px,6.5vw,90px);font-weight:400;line-height:1.18;color:var(--navy);margin-bottom:28px;max-width:860px;animation:fadeUp 0.7s 0.2s ease both;}
 .hero-h1 em{font-style:italic;}
@@ -78,7 +80,21 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);
 .why-headline{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,52px);font-weight:700;color:var(--cream);text-align:center;max-width:700px;margin:0 auto 80px;line-height:1.15;}
 .why-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:60px;max-width:900px;margin:0 auto;}
 .why-stat-big{text-align:center;}
-.why-stat-big-num{font-family:'Playfair Display',serif;font-size:clamp(64px,8vw,110px);font-weight:700;color:rgba(237,234,222,0.25);line-height:1;margin-bottom:16px;display:block;}
+
+/* #4 FIX: stat numbers start at 0.25 opacity, go to 1 on hover of the parent stat block */
+.why-stat-big-num{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(64px,8vw,110px);
+  font-weight:700;
+  color:rgba(237,234,222,0.25);
+  line-height:1;
+  margin-bottom:16px;
+  display:block;
+  transition:color 0.35s ease;
+}
+.why-stat-big:hover .why-stat-big-num{
+  color:rgba(237,234,222,1);
+}
 .why-stat-big-label{font-size:15px;color:var(--cream);opacity:0.75;line-height:1.65;text-align:center;max-width:200px;margin:0 auto;}
 .why-stat-big-source{font-family:'Fragment Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--cream);opacity:0.28;margin-top:10px;display:block;text-align:center;}
 
@@ -89,43 +105,175 @@ body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);
 .gap-headline-wrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0;margin-bottom:52px;}
 .gap-hl-left{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,56px);font-weight:700;color:var(--navy);line-height:1.1;opacity:0.22;margin-bottom:32px;}
 .gap-vert-svg{display:block;margin:0 auto;width:4px;height:80px;overflow:visible;}
-.gap-vert-path{stroke:var(--navy);stroke-width:2;stroke-linecap:round;stroke-dasharray:6 10;fill:none;opacity:0.4;stroke-dashoffset:200;transition:stroke-dashoffset 0s;}
-.gap-vert-path.animate{stroke-dashoffset:0;transition:stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1) 0.2s;}
+
+/* #1 FIX: slow dashed line to exactly 3s, stroke-by-stroke feel */
+.gap-vert-path{
+  stroke:var(--navy);
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-dasharray:6 10;
+  fill:none;
+  opacity:0.4;
+  stroke-dashoffset:200;
+  transition:none;
+}
+.gap-vert-path.animate{
+  animation:drawDash 3s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
+}
+@keyframes drawDash{
+  from{stroke-dashoffset:200;}
+  to{stroke-dashoffset:0;}
+}
+
 .gap-hl-right-wrap{display:flex;flex-direction:column;align-items:center;margin-top:32px;}
-.gap-hl-right{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,56px);font-weight:700;color:var(--navy);line-height:1.1;text-align:center;}
+
+/* #5 FIX: "they just never leave pilot mode" fades in 0.5s after dashed line finishes (3s + 0.5s = 3.5s delay) */
+.gap-hl-right{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,4vw,56px);
+  font-weight:700;
+  color:var(--navy);
+  line-height:1.1;
+  text-align:center;
+  opacity:0;
+  transition:none;
+}
 .gap-hl-right em{font-style:italic;font-weight:400;}
+.gap-hl-right.fade-in{
+  animation:fadeInText 0.5s ease forwards;
+  animation-delay:0s; /* delay handled in JS */
+}
+@keyframes fadeInText{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* McKinsey block — #6: styled wordmark instead of img */
 .gap-mckinsey-block{display:flex;align-items:flex-start;gap:40px;border-left:3px solid var(--navy);padding-left:32px;max-width:860px;margin:0 auto;}
-.gap-mckinsey-m{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-1px;}
-.gap-mckinsey-k{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;font-style:italic;color:var(--navy);line-height:1;}
+.gap-mckinsey-wordmark{
+  font-family:'Times New Roman', Times, serif;
+  font-size:22px;
+  font-weight:400;
+  font-style:italic;
+  color:var(--navy);
+  opacity:0.65;
+  letter-spacing:-0.3px;
+  white-space:nowrap;
+  line-height:1;
+  flex-shrink:0;
+}
 .gap-mckinsey-tag{font-family:'Fragment Mono',monospace;font-size:8px;letter-spacing:0.14em;color:var(--navy);opacity:0.38;margin-top:6px;white-space:nowrap;}
 .gap-mckinsey-quote{font-family:'Lora',serif;font-style:italic;font-size:clamp(16px,1.8vw,22px);color:var(--navy);opacity:0.72;line-height:1.65;}
 
-/* GAP SPLIT hover reveal */
-.gap-split{position:relative;min-height:480px;overflow:hidden;cursor:default;}
-.gap-split-problem{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;transition:opacity 0.7s ease;z-index:1;}
-.gap-split-problem-left{background:#1c2035;padding:60px 52px;display:flex;flex-direction:column;justify-content:center;}
-.gap-split-problem-right{background:#151826;padding:60px 52px;display:flex;flex-direction:column;justify-content:center;opacity:0.5;}
-.gap-split-solution{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;opacity:0;transition:opacity 0.7s ease;z-index:2;pointer-events:none;}
-.gap-split:hover .gap-split-solution{opacity:1;pointer-events:auto;}
-.gap-split:hover .gap-split-problem{opacity:0;}
-.gap-split-solution-left{background:#1c2035;padding:60px 52px;display:flex;flex-direction:column;justify-content:center;opacity:0.35;}
-.gap-split-solution-right{position:relative;padding:60px 52px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:linear-gradient(160deg,#d4e4f0 0%,#c2d8e8 40%,#b0ccdf 100%);}
-.gap-split-solution-right::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 500px 260px at 90% 10%,rgba(255,252,235,0.9) 0%,transparent 60%),radial-gradient(ellipse 400px 220px at 20% 80%,rgba(255,248,228,0.55) 0%,transparent 60%);pointer-events:none;}
-.gap-split-divider-v{position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(237,234,222,0.1);z-index:3;}
-.gap-hover-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:'Fragment Mono',monospace;font-size:9px;letter-spacing:0.18em;color:rgba(237,234,222,0.3);z-index:4;transition:opacity 0.4s;white-space:nowrap;}
-.gap-split:hover .gap-hover-hint{opacity:0;}
-.gap-split-tag{font-family:'Fragment Mono',monospace;font-size:9px;letter-spacing:0.22em;margin-bottom:20px;display:block;position:relative;z-index:1;}
-.gap-split-tag-problem{color:rgba(237,234,222,0.3);}
-.gap-split-tag-solution{color:var(--green);}
-.gap-split-title{font-family:'Playfair Display',serif;font-size:clamp(22px,2.8vw,36px);font-weight:700;margin-bottom:18px;line-height:1.12;position:relative;z-index:1;}
-.gap-split-problem-left .gap-split-title{color:rgba(237,234,222,0.5);}
-.gap-split-solution-left .gap-split-title{color:rgba(237,234,222,0.2);}
-.gap-split-solution-right .gap-split-title{color:#12185A;}
-.gap-split-body{font-size:16px;font-weight:300;line-height:1.82;position:relative;z-index:1;}
-.gap-split-problem-left .gap-split-body{color:rgba(237,234,222,0.45);}
-.gap-split-solution-left .gap-split-body{color:rgba(237,234,222,0.18);}
-.gap-split-solution-right .gap-split-body{color:#12185A;opacity:0.78;}
-.gap-cta-wrap{margin-top:28px;position:relative;z-index:1;}
+/* =============================================
+   #7: REDESIGNED PROBLEM / SOLUTION SECTION
+   Design: Two-column contrast block — dark left (problem),
+   light right (solution). Clean B2B SaaS pattern (à la Rippling/Linear).
+   Each side has a label, headline, and scannable bullet list.
+   No hover tricks — works perfectly on mobile.
+   ============================================= */
+.gap-split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:520px;
+}
+
+/* LEFT — Problem */
+.gap-split-col-left{
+  background:#141828;
+  padding:72px 60px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.gap-split-col-left::before{
+  content:'';
+  position:absolute;
+  top:-80px;right:-80px;
+  width:260px;height:260px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,0.03) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+/* RIGHT — Solution */
+.gap-split-col-right{
+  background:var(--cream);
+  padding:72px 60px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  border-left:1px solid rgba(18,24,90,0.1);
+}
+
+.gap-split-label{
+  font-family:'Fragment Mono',monospace;
+  font-size:9px;
+  letter-spacing:0.26em;
+  text-transform:uppercase;
+  margin-bottom:22px;
+  display:block;
+}
+.gap-split-label-problem{color:rgba(237,234,222,0.32);}
+.gap-split-label-solution{color:var(--green);}
+
+.gap-split-h{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(24px,2.6vw,36px);
+  font-weight:700;
+  line-height:1.15;
+  margin-bottom:24px;
+}
+.gap-split-col-left .gap-split-h{color:rgba(237,234,222,0.88);}
+.gap-split-col-right .gap-split-h{color:var(--navy);}
+
+.gap-split-p{
+  font-size:15px;
+  font-weight:300;
+  line-height:1.82;
+  margin-bottom:28px;
+}
+.gap-split-col-left .gap-split-p{color:rgba(237,234,222,0.48);}
+.gap-split-col-right .gap-split-p{color:var(--navy);opacity:0.72;}
+
+.gap-split-items{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:13px;
+  margin-bottom:36px;
+}
+.gap-split-items li{
+  font-size:15px;
+  font-weight:300;
+  line-height:1.55;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+.gap-split-col-left .gap-split-items li{color:rgba(237,234,222,0.52);}
+.gap-split-col-right .gap-split-items li{color:var(--navy);opacity:0.8;}
+
+/* bullet icons */
+.gap-split-col-left .gap-split-items li::before{
+  content:'✕';
+  font-size:10px;
+  color:rgba(237,234,222,0.25);
+  margin-top:3px;
+  flex-shrink:0;
+}
+.gap-split-col-right .gap-split-items li::before{
+  content:'✓';
+  font-size:11px;
+  color:var(--green);
+  margin-top:3px;
+  flex-shrink:0;
+  font-weight:700;
+}
+
+.gap-split-cta{margin-top:4px;}
 
 /* CTA */
 #cta{background:var(--navy);color:var(--cream);text-align:center;padding:120px 40px;position:relative;overflow:hidden;}
@@ -148,12 +296,10 @@ footer{background:var(--navy);border-top:1px solid rgba(237,234,222,0.1);padding
 
 /* ANIMATIONS */
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
-@keyframes drawLine{to{stroke-dashoffset:0;}}
 .anim{opacity:0;}
 .anim.visible{animation:fadeUp 0.65s ease forwards;}
 .anim-d1{animation-delay:0.05s;}.anim-d2{animation-delay:0.15s;}.anim-d3{animation-delay:0.25s;}
 
-/* container */
 .container{max-width:1120px;margin:0 auto;padding:0 40px;}
 section{padding:100px 40px;}
 
@@ -167,17 +313,14 @@ section{padding:100px 40px;}
   .hero-cta-row .btn-primary{width:100%;text-align:center;}
   .process-track{grid-template-columns:1fr;}
   .why-stats-row{grid-template-columns:1fr;gap:32px;}
-  .gap-split-problem,.gap-split-solution{position:relative;display:flex;flex-direction:column;}
-  .gap-split-solution{opacity:1!important;pointer-events:auto!important;}
-  .gap-split-problem{display:none;}
-  .gap-split-solution-left{padding:40px 24px;}
-  .gap-split-solution-right{padding:40px 24px;}
-  .gap-split-divider-v,.gap-hover-hint{display:none;}
+  .gap-split{grid-template-columns:1fr;}
+  .gap-split-col-left{padding:52px 28px;}
+  .gap-split-col-right{padding:52px 28px;border-left:none;border-top:1px solid rgba(18,24,90,0.1);}
   .gap-mckinsey-block{flex-direction:column;gap:20px;padding-left:20px;}
   .footer-inner{grid-template-columns:1fr;}
   .floating-cta{top:14px;right:16px;}
   .floating-cta button{font-size:9px;padding:11px 16px;}
-  .hero-logo-img{height:52px;}
+  .hero-logo-img{height:64px;}
 }
 </style>
 </head>
@@ -233,9 +376,21 @@ section{padding:100px 40px;}
     <div class="eyebrow" style="text-align:center;color:var(--cream);">/ WHY NOW</div>
     <h2 class="why-headline anim">While you read this,<br>your competitor's AI<br><em>just lapped you.</em></h2>
     <div class="why-stats-row anim anim-d1">
-      <div class="why-stat-big"><span class="why-stat-big-num">54%</span><p class="why-stat-big-label">of CEOs believe their company won't survive past 2030 without AI</p><span class="why-stat-big-source">MERCER GLOBAL TALENT TRENDS, 2025</span></div>
-      <div class="why-stat-big"><span class="why-stat-big-num">91%</span><p class="why-stat-big-label">of AI-using businesses report revenue increases — growing firms are 1.8x more likely to invest in AI</p><span class="why-stat-big-source">McKINSEY, 2024</span></div>
-      <div class="why-stat-big"><span class="why-stat-big-num">3.5x</span><p class="why-stat-big-label">faster revenue growth for companies with fully integrated AI operations</p><span class="why-stat-big-source">HARVARD BUSINESS REVIEW, 2024</span></div>
+      <div class="why-stat-big">
+        <span class="why-stat-big-num">54%</span>
+        <p class="why-stat-big-label">of CEOs believe their company won't survive past 2030 without AI</p>
+        <span class="why-stat-big-source">MERCER GLOBAL TALENT TRENDS, 2025</span>
+      </div>
+      <div class="why-stat-big">
+        <span class="why-stat-big-num">91%</span>
+        <p class="why-stat-big-label">of AI-using businesses report revenue increases — growing firms are 1.8x more likely to invest in AI</p>
+        <span class="why-stat-big-source">McKINSEY, 2024</span>
+      </div>
+      <div class="why-stat-big">
+        <span class="why-stat-big-num">3.5x</span>
+        <p class="why-stat-big-label">faster revenue growth for companies with fully integrated AI operations</p>
+        <span class="why-stat-big-source">HARVARD BUSINESS REVIEW, 2024</span>
+      </div>
     </div>
   </div>
 </section>
@@ -246,46 +401,55 @@ section{padding:100px 40px;}
     <div class="gap-eyebrow">/ THE REYSTONE GAP</div>
     <div class="gap-headline-wrap">
       <span class="gap-hl-left">Most companies are<br>building AI workflows —</span>
-      <svg class="gap-vert-svg" viewBox="0 0 4 80"><line class="gap-vert-path" x1="2" y1="0" x2="2" y2="80"/></svg>
-      <div class="gap-hl-right-wrap" id="gapRightText"><span class="gap-hl-right">they just never<br><em>leave pilot mode.</em></span></div>
+      <svg class="gap-vert-svg" viewBox="0 0 4 80">
+        <line class="gap-vert-path" x1="2" y1="0" x2="2" y2="80"/>
+      </svg>
+      <!-- #5: text starts hidden, fades in after line finishes -->
+      <div class="gap-hl-right-wrap" id="gapRightText">
+        <span class="gap-hl-right" id="pilotModeText">they just never<br><em>leave pilot mode.</em></span>
+      </div>
     </div>
+
+    <!-- #6: McKinsey styled wordmark -->
     <div class="gap-mckinsey-block anim anim-d2">
       <div style="flex-shrink:0;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/McKinsey_Script_Mark_2019.svg/320px-McKinsey_Script_Mark_2019.svg.png" alt="McKinsey" style="height:32px;width:auto;opacity:0.65;filter:invert(0);">
-        <div class="gap-mckinsey-tag" style="margin-top:6px;">STATE OF AI, 2025</div>
+        <div class="gap-mckinsey-wordmark">McKinsey<br>&amp; Company</div>
+        <div class="gap-mckinsey-tag">STATE OF AI, 2025</div>
       </div>
       <p class="gap-mckinsey-quote">"Nearly 9 in 10 organizations now deploy AI in at least one business function — yet two thirds remain trapped in experimentation, unable to scale a single workflow to enterprise impact."</p>
     </div>
   </div>
 
+  <!-- #7: REDESIGNED Problem / Solution — clean two-column contrast block -->
   <div class="gap-split">
-    <div class="gap-split-inner">
-      <div class="gap-split-col gap-split-col-left">
-        <div class="gap-split-label gap-split-label-problem">/ THE PROBLEM</div>
-        <h3 class="gap-split-h">Most businesses are<br>running on broken ops.</h3>
-        <p class="gap-split-p">They've subscribed to the tools. Run the pilots. Had the conversations. And the P&L looks exactly the same as before any of it happened.</p>
-        <ul class="gap-split-items">
-          <li>No defined AI strategy or roadmap</li>
-          <li>Tools deployed, nobody trained to use them</li>
-          <li>Workflows still manual — humans doing machine work</li>
-          <li>No accountability. No measured outcome. No ROI.</li>
-          <li>Consultant delivered a deck. Nothing was built.</li>
-        </ul>
-      </div>
-      <div class="gap-split-col gap-split-col-right">
-        <div class="gap-split-label gap-split-label-solution">/ THE REYSTONE FIX</div>
-        <h3 class="gap-split-h">We build the system.<br>Then we guarantee it works.</h3>
-        <p class="gap-split-p">ReyStone doesn't advise. We design, deploy, and stand behind every system we build — with our fee tied to your results.</p>
-        <ul class="gap-split-items">
-          <li>Custom AI strategy built around your operation</li>
-          <li>Full deployment — not a pilot, not a prototype</li>
-          <li>Autonomous workflows that run without your team</li>
-          <li>ROI projected upfront. Guaranteed or we work free.</li>
-          <li>Leadership training so your team owns it forever</li>
-        </ul>
-        <div class="gap-split-cta">
-          <button class="btn-primary" onclick="openModal()" style="background:var(--cream);color:var(--navy);border-color:var(--cream);">Book Discovery Meeting →</button>
-        </div>
+    <!-- LEFT: The Problem -->
+    <div class="gap-split-col-left">
+      <span class="gap-split-label gap-split-label-problem">/ THE PROBLEM</span>
+      <h3 class="gap-split-h">Most businesses are<br>running on broken ops.</h3>
+      <p class="gap-split-p">They've subscribed to the tools. Run the pilots. Had the conversations. And the P&L looks exactly the same as before any of it happened.</p>
+      <ul class="gap-split-items">
+        <li>No defined AI strategy or roadmap</li>
+        <li>Tools deployed, nobody trained to use them</li>
+        <li>Workflows still manual — humans doing machine work</li>
+        <li>No accountability. No measured outcome. No ROI.</li>
+        <li>Consultant delivered a deck. Nothing was built.</li>
+      </ul>
+    </div>
+
+    <!-- RIGHT: The Fix -->
+    <div class="gap-split-col-right">
+      <span class="gap-split-label gap-split-label-solution">/ THE REYSTONE FIX</span>
+      <h3 class="gap-split-h">We build the system.<br>Then we guarantee it works.</h3>
+      <p class="gap-split-p">ReyStone doesn't advise. We design, deploy, and stand behind every system we build — with our fee tied to your results.</p>
+      <ul class="gap-split-items">
+        <li>Custom AI strategy built around your operation</li>
+        <li>Full deployment — not a pilot, not a prototype</li>
+        <li>Autonomous workflows that run without your team</li>
+        <li>ROI projected upfront. Guaranteed or we work free.</li>
+        <li>Leadership training so your team owns it forever</li>
+      </ul>
+      <div class="gap-split-cta">
+        <button class="btn-primary" onclick="openModal()">Book Discovery Meeting →</button>
       </div>
     </div>
   </div>
@@ -296,6 +460,7 @@ section{padding:100px 40px;}
   <div class="container" style="text-align:center;">
     <div class="eyebrow">/READY TO BUILD</div>
     <h2>AI that works<br>like <em>ten of you.</em></h2>
+    <!-- #8: Updated copy -->
     <p class="cta-sub">45 min with our Founder so we get to know your business and map out your biggest AI opportunities. No pitch, no pressure.</p>
     <div class="cta-row">
       <button class="btn-cream" onclick="openModal()" style="font-size:11px;padding:16px 36px;">Book Discovery Meeting →</button>
@@ -311,6 +476,8 @@ section{padding:100px 40px;}
       <a href="#hero" style="display:inline-block;margin-bottom:18px;">
         <img src="https://i.postimg.cc/yNDvShPk/Beige.png" alt="ReyStone" style="height:36px;filter:brightness(0) invert(1);">
       </a>
+      <!-- #9: Updated footer tagline -->
+      <p class="footer-desc">Human Strategy, AI Implementation for a Lifetime.</p>
       <button class="btn-cream" onclick="openModal()" style="font-size:10px;display:block;margin-top:8px;">Book Discovery Meeting →</button>
     </div>
     <div>
@@ -328,7 +495,6 @@ section{padding:100px 40px;}
         <a href="#" onclick="openModal();return false;">Book Discovery Meeting</a>
       </div>
       <div class="footer-col-label" style="margin-top:28px;">HOUSTON, TX</div>
-      <p class="footer-desc">Human Strategy, AI Implementation for a Lifetime.</p>
     </div>
   </div>
   <p class="footer-copy">© 2026 ReyStone AI Consultancy · Houston, Texas · Built by humans, powered by AI</p>
@@ -354,22 +520,17 @@ const gapSection = document.getElementById('thegap');
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
   const heroH = document.getElementById('hero').offsetHeight;
-
-  // Show/hide floating logo
   if(scrollY > heroH * 0.6){
     floatingLogo.classList.add('visible');
   } else {
     floatingLogo.classList.remove('visible');
   }
-
-  // Color switching
   const whyTop = whySection ? whySection.offsetTop : 99999;
   const gapTop = gapSection ? gapSection.offsetTop : 99999;
-
   if(scrollY >= whyTop - 100 && scrollY < gapTop - 100){
-    floatingLogoImg.classList.add('light'); // cream on navy
+    floatingLogoImg.classList.add('light');
   } else {
-    floatingLogoImg.classList.remove('light'); // dark on cream
+    floatingLogoImg.classList.remove('light');
   }
 });
 
@@ -406,22 +567,25 @@ if(circlePath && revenueWord){
   circleObserver.observe(revenueWord);
 }
 
-// Gap dashed line + delayed text fade
+// #1 + #5: Dashed line (3s) → then fade in "pilot mode" text (0.5s after)
 const vertPath = document.querySelector('.gap-vert-path');
-const gapRightText = document.getElementById('gapRightText');
+const pilotModeText = document.getElementById('pilotModeText');
 const gapTopEl = document.querySelector('.gap-top');
+let lineAnimated = false;
+
 if(vertPath && gapTopEl){
   const gapObserver = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if(e.isIntersecting){
+      if(e.isIntersecting && !lineAnimated){
+        lineAnimated = true;
+        // Start 3s dashed line animation
         vertPath.classList.add('animate');
-        // fade in text 0.5s after line finishes (3s line + 0.5s delay)
+        // After 3s line + 0.5s delay = 3.5s, fade in the text
         setTimeout(() => {
-          if(gapRightText) gapRightText.classList.add('visible');
+          if(pilotModeText){
+            pilotModeText.classList.add('fade-in');
+          }
         }, 3500);
-      } else {
-        vertPath.classList.remove('animate');
-        if(gapRightText) gapRightText.classList.remove('visible');
       }
     });
   }, {threshold:0.3});
