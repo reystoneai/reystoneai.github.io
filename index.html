@@ -434,7 +434,13 @@ footer{background:var(--navy);border-top:1px solid rgba(237,234,222,0.1);padding
   pointer-events:none;
 }
 @media(max-width:768px){
-  #top-nav{padding-left:110px;padding-right:8px;}
+  #top-nav{padding-left:0;padding-right:0;justify-content:center;}
+  .floating-logo{top:12px;left:12px;}
+  .floating-logo .logo{height:20px;}
+}
+@media(max-width:480px){
+  .nav-link{font-size:7px;padding:6px 10px;letter-spacing:0.1em;}
+  .nav-pill{padding:4px 5px;margin-top:10px;}
 }
 .nav-pill{
   display:flex;align-items:center;gap:2px;
@@ -516,7 +522,7 @@ footer{background:var(--navy);border-top:1px solid rgba(237,234,222,0.1);padding
 </nav>
 
 
-<div id="page-main">
+<div id="page-main" style="background:var(--cream);">
 <!-- FLOATING LOGO -->
 <div class="floating-logo" id="floatingLogo">
   <a href="#hero">
@@ -708,8 +714,8 @@ footer{background:var(--navy);border-top:1px solid rgba(237,234,222,0.1);padding
     <div>
       <div class="footer-col-label">CONTACT</div>
       <div class="footer-links">
-        <a href="mailto:hey@reystone.ai">hey@reystone.ai</a>
-        <a href="mailto:pia@reystone.ai">pia@reystone.ai</a>
+        <a href="/cdn-cgi/l/email-protection#29414c50695b4c505a5d46474c074840"><span class="__cf_email__" data-cfemail="0a626f734a786f73797e65646f246b63">[email&#160;protected]</span></a>
+        <a href="/cdn-cgi/l/email-protection#35455c547547504c46415a5b501b545c"><span class="__cf_email__" data-cfemail="33435a527341564a40475c5d561d525a">[email&#160;protected]</span></a>
         <a href="#" onclick="openModal();return false;">Book Discovery Meeting</a>
       </div>
       <div class="footer-col-label" style="margin-top:28px;">HOUSTON, TX</div>
@@ -718,7 +724,7 @@ footer{background:var(--navy);border-top:1px solid rgba(237,234,222,0.1);padding
   <p class="footer-copy">© 2026 reystone ai Consultancy · Houston, Texas · Built by humans, powered by AI</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function openModal(){
   if(typeof Calendly!=='undefined'){
     Calendly.initPopupWidget({url:'https://calendly.com/piavanrey'});
@@ -793,6 +799,15 @@ const cardObs = new IntersectionObserver(entries => {
 }, {threshold:0.1});
 
 // ── Animate wf-phase cards (Adaption Cases) ─────────────
+// ── Mobile phase accordion ───────────────────────────
+function togglePhase(el){
+  if(window.innerWidth > 768) return;
+  const isOpen = el.classList.contains('open');
+  el.closest('.wf-phases').querySelectorAll('.wf-phase').forEach(p => p.classList.remove('open'));
+  if(!isOpen) el.classList.add('open');
+}
+
+// ── Animate wf-phase cards on scroll ─────────────────
 document.querySelectorAll('.wf-phases').forEach(grid => {
   const phaseObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -884,11 +899,28 @@ setTimeout(() => { if(navPill) navPill.classList.add('show'); }, 1200);
 </script>
 </div>
 <!-- ══ AUTOMATION CASES ══════════════════════════════════════ -->
-<div id="page-cases" style="display:none;">
+<div id="page-cases" style="display:none;background:var(--cream);">
 <style>
 /* Cases page */
-#cases-section{background:var(--cream);padding:120px 40px 80px;min-height:100vh;}
-@media(max-width:768px){#cases-section{padding:80px 24px 60px;}}
+#cases-section{background:var(--cream);padding:120px 40px 60px;min-height:100vh;}
+@media(max-width:768px){
+  #cases-section{padding:80px 16px 40px;}
+  .case-body{padding:20px 16px;}
+  .case-header{padding:24px 20px;}
+  .case-title{font-size:16px;}
+  .wf-phases{grid-template-columns:1fr;gap:0;}
+  .wf-phase{border-radius:0;border-left:none;border-top:3px solid var(--green);
+    padding:0;cursor:pointer;overflow:hidden;}
+  .wf-phase-content{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s ease;padding:0 16px;}
+  .wf-phase.open .wf-phase-content{max-height:300px;padding:12px 16px 16px;}
+  .wf-phase-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;}
+  .wf-phase-toggle{font-family:'Fragment Mono',monospace;font-size:14px;color:var(--green);transition:transform 0.3s;}
+  .wf-phase.open .wf-phase-toggle{transform:rotate(45deg);}
+  .compare-wrap{grid-template-columns:1fr;}
+  .software-grid{grid-template-columns:1fr 1fr;}
+  .invest-table th,.invest-table td{font-size:11px;padding:8px 10px;}
+  .case-section-title{font-size:17px;}
+}
 .cases-inner{max-width:1120px;margin:0 auto;}
 .cases-eyebrow{font-family:'Fragment Mono',monospace;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--navy);opacity:0.4;margin-bottom:20px;display:block;}
 .cases-headline{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,60px);font-weight:700;color:var(--navy);line-height:1.08;margin-bottom:16px;}
@@ -985,34 +1017,76 @@ setTimeout(() => { if(navPill) navPill.classList.add('show'); }, 1200);
 
         <div class="wf-phases">
           <div class="wf-phase">
-            <span class="wf-phase-num">PHASE 1 — RESEARCH</span>
-            <div class="wf-phase-title">Trend &amp; Competitor Intelligence</div>
-            <p class="wf-phase-desc">Overnight, AI scrapes competitor content across social platforms, forecasts trends, and detects viral signals. All research is merged into a structured bundle saved to a central library.</p>
+            <div class="wf-phase-header" onclick="togglePhase(this.parentElement)">
+              <div>
+                <span class="wf-phase-num">PHASE 1 — RESEARCH</span>
+                <div class="wf-phase-title">Trend &amp; Competitor Intelligence</div>
+              </div>
+              <span class="wf-phase-toggle">+</span>
+            </div>
+            <div class="wf-phase-content">
+              <p class="wf-phase-desc">Overnight, AI scrapes competitor content across social platforms, forecasts trends, and detects viral signals. All research is merged into a structured bundle saved to a central library.</p>
+            </div>
           </div>
           <div class="wf-phase">
-            <span class="wf-phase-num">PHASE 2 — RELATE</span>
-            <div class="wf-phase-title">Brand Alignment &amp; Content Angles</div>
-            <p class="wf-phase-desc">AI downloads the research bundle alongside historical performance data. It scores brand-fit against your target audience and generates platform-specific content angles — saving a structured creative brief to the content library.</p>
+            <div class="wf-phase-header" onclick="togglePhase(this.parentElement)">
+              <div>
+                <span class="wf-phase-num">PHASE 2 — RELATE</span>
+                <div class="wf-phase-title">Brand Alignment &amp; Content Angles</div>
+              </div>
+              <span class="wf-phase-toggle">+</span>
+            </div>
+            <div class="wf-phase-content">
+              <p class="wf-phase-desc">AI downloads the research bundle alongside historical performance data. It scores brand-fit against your target audience and generates platform-specific content angles — saving a structured creative brief to the content library.</p>
+            </div>
           </div>
           <div class="wf-phase">
-            <span class="wf-phase-num">PHASE 3 — CREATE</span>
-            <div class="wf-phase-title">Content &amp; Visual Production</div>
-            <p class="wf-phase-desc">AI downloads the creative brief, generates platform-specific copy, produces static visuals and video reels, assembles complete content pieces with metadata, and saves everything to the content library — ready for review.</p>
+            <div class="wf-phase-header" onclick="togglePhase(this.parentElement)">
+              <div>
+                <span class="wf-phase-num">PHASE 3 — CREATE</span>
+                <div class="wf-phase-title">Content &amp; Visual Production</div>
+              </div>
+              <span class="wf-phase-toggle">+</span>
+            </div>
+            <div class="wf-phase-content">
+              <p class="wf-phase-desc">AI downloads the creative brief, generates platform-specific copy, produces static visuals and video reels, assembles complete content pieces with metadata, and saves everything to the content library — ready for review.</p>
+            </div>
           </div>
           <div class="wf-phase">
-            <span class="wf-phase-num">PHASE 4 — REVIEW</span>
-            <div class="wf-phase-title">Human Review Digest</div>
-            <p class="wf-phase-desc">Each morning, AI compiles all created content pieces into a review dashboard and delivers a digest email to the team. The reviewer can approve, reject, or request edits directly — one action per piece, no login required.</p>
+            <div class="wf-phase-header" onclick="togglePhase(this.parentElement)">
+              <div>
+                <span class="wf-phase-num">PHASE 4 — REVIEW</span>
+                <div class="wf-phase-title">Human Review Digest</div>
+              </div>
+              <span class="wf-phase-toggle">+</span>
+            </div>
+            <div class="wf-phase-content">
+              <p class="wf-phase-desc">Each morning, AI compiles all created content pieces into a review dashboard and delivers a digest email to the team. The reviewer can approve, reject, or request edits directly — one action per piece, no login required.</p>
+            </div>
           </div>
           <div class="wf-phase">
-            <span class="wf-phase-num">PHASE 5 — PUBLISH</span>
-            <div class="wf-phase-title">Approval Webhook &amp; Auto-Publish</div>
-            <p class="wf-phase-desc">Triggered by reviewer action. AI validates the approval, routes the piece accordingly — publishing approved content across all 6 channels, archiving rejections, and processing edit requests by revising the piece automatically.</p>
+            <div class="wf-phase-header" onclick="togglePhase(this.parentElement)">
+              <div>
+                <span class="wf-phase-num">PHASE 5 — PUBLISH</span>
+                <div class="wf-phase-title">Approval Webhook &amp; Auto-Publish</div>
+              </div>
+              <span class="wf-phase-toggle">+</span>
+            </div>
+            <div class="wf-phase-content">
+              <p class="wf-phase-desc">Triggered by reviewer action. AI validates the approval, routes the piece accordingly — publishing approved content across all 6 channels, archiving rejections, and processing edit requests by revising the piece automatically.</p>
+            </div>
           </div>
           <div class="wf-phase">
-            <span class="wf-phase-num">PHASE 6 — FEEDBACK</span>
-            <div class="wf-phase-title">Performance &amp; Learning Loop</div>
-            <p class="wf-phase-desc">End of day, AI pulls analytics on every published piece, analyzes performance patterns, extracts content insights, and saves learnings to the library — feeding the next research cycle with real performance data.</p>
+            <div class="wf-phase-header" onclick="togglePhase(this.parentElement)">
+              <div>
+                <span class="wf-phase-num">PHASE 6 — FEEDBACK</span>
+                <div class="wf-phase-title">Performance &amp; Learning Loop</div>
+              </div>
+              <span class="wf-phase-toggle">+</span>
+            </div>
+            <div class="wf-phase-content">
+              <p class="wf-phase-desc">End of day, AI pulls analytics on every published piece, analyzes performance patterns, extracts content insights, and saves learnings to the library — feeding the next research cycle with real performance data.</p>
+            </div>
           </div>
         </div>
 
@@ -1102,11 +1176,11 @@ setTimeout(() => { if(navPill) navPill.classList.add('show'); }, 1200);
 
         <table class="invest-table">
           <tr><th>Service</th><th class="invest-price">Investment</th></tr>
-          <tr><td>Reystone ai Roadmap</td><td class="invest-price">$2,500</td></tr>
-          <tr><td>Reystone ai Strategy (Autonomous 6-Hour Content Loop)</td><td class="invest-price">$4,500</td></tr>
-          <tr><td>Reystone ai Workflow Implementation — 7 workflows via n8n @ $2,500 each</td><td class="invest-price">$17,500</td></tr>
-          <tr><td>Reystone ai Workflow QC, Testing &amp; Optimization — 7 workflows @ $500 each</td><td class="invest-price">$3,500</td></tr>
-          <tr><td>Reystone ai Training of Human Team Leader</td><td class="invest-price">$1,250</td></tr>
+          <tr><td>reystone ai Roadmap</td><td class="invest-price">$2,500</td></tr>
+          <tr><td>reystone ai Strategy (Autonomous 6-Hour Content Loop)</td><td class="invest-price">$4,500</td></tr>
+          <tr><td>reystone ai Workflow Implementation — 7 workflows via n8n @ $2,500 each</td><td class="invest-price">$17,500</td></tr>
+          <tr><td>reystone ai Workflow QC, Testing &amp; Optimization — 7 workflows @ $500 each</td><td class="invest-price">$3,500</td></tr>
+          <tr><td>reystone ai Training of Human Team Leader</td><td class="invest-price">$1,250</td></tr>
           <tr><td>Software stack (ongoing)</td><td class="invest-price">$280–370/mo</td></tr>
           <tr><td colspan="2"></td></tr>
           <tr><td><strong>Total One-Time AI Investment</strong></td><td class="invest-price"><strong>$29,250</strong></td></tr>
@@ -1137,19 +1211,40 @@ setTimeout(() => { if(navPill) navPill.classList.add('show'); }, 1200);
 
         <div class="wf-phases">
           <div class="wf-phase">
-            <span class="wf-phase-num">PHASE 1 — RESEARCH</span>
-            <div class="wf-phase-title">Multi-Channel Lead Harvesting</div>
-            <p class="wf-phase-desc">AI continuously monitors public channels — Reddit, Craigslist, online marketplaces, and social platforms — scanning for outbound signals that match your target criteria. For each qualifying signal, the system extracts available demographic information and a direct link to the original post. Leads are scored on intent strength, recency, and fit before any human sees them.</p>
+            <div class="wf-phase-header" onclick="togglePhase(this.parentElement)">
+              <div>
+                <span class="wf-phase-num">PHASE 1 — RESEARCH</span>
+                <div class="wf-phase-title">Multi-Channel Lead Harvesting</div>
+              </div>
+              <span class="wf-phase-toggle">+</span>
+            </div>
+            <div class="wf-phase-content">
+              <p class="wf-phase-desc">AI continuously monitors public channels — Reddit, Craigslist, online marketplaces, and social platforms — scanning for outbound signals that match your target criteria. For each qualifying signal, the system extracts available demographic information and a direct link to the original post. Leads are scored on intent strength, recency, and fit before any human sees them.</p>
+            </div>
           </div>
           <div class="wf-phase">
-            <span class="wf-phase-num">PHASE 2 — CRM IMPORT &amp; REP MATCHING</span>
-            <div class="wf-phase-title">Intelligent Routing &amp; Assignment</div>
-            <p class="wf-phase-desc">AI maps each lead's available data into your CRM — contact details, source, intent signal, fit score, and context notes. It then assigns the lead to the sales rep most likely to close, based on their closing track record by lead type, current pipeline load, availability, and historical performance patterns. The right lead reaches the right rep automatically.</p>
+            <div class="wf-phase-header" onclick="togglePhase(this.parentElement)">
+              <div>
+                <span class="wf-phase-num">PHASE 2 — CRM IMPORT &amp; REP MATCHING</span>
+                <div class="wf-phase-title">Intelligent Routing &amp; Assignment</div>
+              </div>
+              <span class="wf-phase-toggle">+</span>
+            </div>
+            <div class="wf-phase-content">
+              <p class="wf-phase-desc">AI maps each lead's available data into your CRM — contact details, source, intent signal, fit score, and context notes. It then assigns the lead to the sales rep most likely to close, based on their closing track record by lead type, current pipeline load, availability, and historical performance patterns. The right lead reaches the right rep automatically.</p>
+            </div>
           </div>
           <div class="wf-phase">
-            <span class="wf-phase-num">PHASE 3 — FEEDBACK &amp; LEARNING</span>
-            <div class="wf-phase-title">Performance Loop &amp; Optimization</div>
-            <p class="wf-phase-desc">AI reports pipeline activity to the director of sales on a defined cadence — new leads by source, rep assignment distribution, and conversion tracking. As outcomes are logged, the system updates its routing model, improving lead-to-rep matching accuracy over time. The longer the system runs, the better it gets.</p>
+            <div class="wf-phase-header" onclick="togglePhase(this.parentElement)">
+              <div>
+                <span class="wf-phase-num">PHASE 3 — FEEDBACK &amp; LEARNING</span>
+                <div class="wf-phase-title">Performance Loop &amp; Optimization</div>
+              </div>
+              <span class="wf-phase-toggle">+</span>
+            </div>
+            <div class="wf-phase-content">
+              <p class="wf-phase-desc">AI reports pipeline activity to the director of sales on a defined cadence — new leads by source, rep assignment distribution, and conversion tracking. As outcomes are logged, the system updates its routing model, improving lead-to-rep matching accuracy over time. The longer the system runs, the better it gets.</p>
+            </div>
           </div>
         </div>
 
@@ -1242,11 +1337,11 @@ setTimeout(() => { if(navPill) navPill.classList.add('show'); }, 1200);
 
         <table class="invest-table">
           <tr><th>Service</th><th class="invest-price">Investment</th></tr>
-          <tr><td>Reystone ai Roadmap</td><td class="invest-price">$2,500</td></tr>
-          <tr><td>Reystone ai Strategy (Lead Harvesting Architecture)</td><td class="invest-price">$3,000</td></tr>
-          <tr><td>Reystone ai Workflow Implementation — 3 workflows via n8n @ $2,500 each</td><td class="invest-price">$7,500</td></tr>
-          <tr><td>Reystone ai Workflow QC, Testing &amp; Optimization — 3 workflows @ $350 each</td><td class="invest-price">$1,050</td></tr>
-          <tr><td>Reystone ai Training of Sales Director</td><td class="invest-price">$950</td></tr>
+          <tr><td>reystone ai Roadmap</td><td class="invest-price">$2,500</td></tr>
+          <tr><td>reystone ai Strategy (Lead Harvesting Architecture)</td><td class="invest-price">$3,000</td></tr>
+          <tr><td>reystone ai Workflow Implementation — 3 workflows via n8n @ $2,500 each</td><td class="invest-price">$7,500</td></tr>
+          <tr><td>reystone ai Workflow QC, Testing &amp; Optimization — 3 workflows @ $350 each</td><td class="invest-price">$1,050</td></tr>
+          <tr><td>reystone ai Training of Sales Director</td><td class="invest-price">$950</td></tr>
           <tr><td>Software stack (ongoing)</td><td class="invest-price">$242–322/mo</td></tr>
           <tr><td colspan="2"></td></tr>
           <tr><td><strong>Total One-Time AI Investment</strong></td><td class="invest-price"><strong>$15,000</strong></td></tr>
@@ -1266,7 +1361,7 @@ setTimeout(() => { if(navPill) navPill.classList.add('show'); }, 1200);
 </div>
 
 <!-- ══ CONTACT ════════════════════════════════════════════════ -->
-<div id="page-contact" style="display:none;">
+<div id="page-contact" style="display:none;background:var(--navy);">
 <style>
 #contact-section{background:var(--navy);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 40px;}
 @media(max-width:768px){#contact-section{padding:80px 24px;}}
@@ -1339,7 +1434,7 @@ setTimeout(() => { if(navPill) navPill.classList.add('show'); }, 1200);
     <div style="display:flex;flex-direction:column;gap:10px;padding-top:28px;border-top:1px solid rgba(237,234,222,0.1);">
       <div style="display:flex;align-items:center;gap:12px;">
         <span style="font-family:'Fragment Mono',monospace;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(237,234,222,0.3);width:60px;">Email</span>
-        <span style="font-size:14px;color:rgba(237,234,222,0.6);"><a href="mailto:hey@reystone.ai" style="color:var(--green);text-decoration:none;">hey@reystone.ai</a></span>
+        <span style="font-size:14px;color:rgba(237,234,222,0.6);"><a href="/cdn-cgi/l/email-protection#b0d8d5c9f0c2d5c9c3c4dfded59ed1d9" style="color:var(--green);text-decoration:none;"><span class="__cf_email__" data-cfemail="630b061a2311061a10170c0d064d020a">[email&#160;protected]</span></a></span>
       </div>
       <div style="display:flex;align-items:center;gap:12px;">
         <span style="font-family:'Fragment Mono',monospace;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(237,234,222,0.3);width:60px;">Offices</span>
@@ -1351,7 +1446,7 @@ setTimeout(() => { if(navPill) navPill.classList.add('show'); }, 1200);
 </div>
 
 <!-- ══ BLOG ═══════════════════════════════════════════════════ -->
-<div id="page-blog" style="display:none;">
+<div id="page-blog" style="display:none;background:var(--cream);">
 <style>
 #blog-section{background:var(--cream);padding:120px 40px 80px;min-height:100vh;}
 @media(max-width:768px){#blog-section{padding:80px 24px 60px;}}
@@ -1421,7 +1516,7 @@ setTimeout(() => { if(navPill) navPill.classList.add('show'); }, 1200);
 
 
 </div>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── Blog data ─────────────────────────────────────────────
 const blogPosts = [
   // ── GENERAL (5) ──────────────────────────────────────────
@@ -1766,11 +1861,5 @@ window.addEventListener('load', function(){
   if(typeof renderBlogGrid === 'function') renderBlogGrid('all');
 });
 </script>
-<!-- BLOG — hidden visually, crawlable by search engines for SEO -->
-<div id="seo-blog" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;">
-  <h2>reystone ai Blog — Houston AI Consultancy</h2>
-  <p>Insights on AI workflow automation, business optimization, and ROI-driven AI implementation for small businesses in Houston, Texas and Southern California.</p>
-</div>
-
 </body>
 </html>
