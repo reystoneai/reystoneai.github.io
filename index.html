@@ -1241,6 +1241,88 @@ document.addEventListener('click', e => {
 .invest-tbl td{font-size:14px;font-weight:300;color:rgba(18,24,90,0.7);padding:10px 14px;border-bottom:1px solid rgba(18,24,90,0.06);}
 .invest-tbl tr:last-child td{font-family:'Fragment Mono',monospace;font-weight:700;color:var(--navy);border-top:2px solid var(--navy);border-bottom:none;font-size:13px;}
 .invest-price-v2{font-family:'Playfair Display',serif;font-weight:700;color:var(--navy);text-align:right;}
+
+/* ════════════════════════════════════════════════════════
+   MOBILE CASES OVERRIDES — applied AFTER desktop CSS
+   ═══════════════════════════════════════════════════════ */
+@media(max-width:768px){
+  /* 1. Phase cards: force single column stack */
+  .wf-phases-v2{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:8px !important;
+  }
+  /* 2. Tech stack: exactly 2 bubbles per line */
+  .sw-grid-v2{
+    grid-template-columns:repeat(2,1fr) !important;
+    width:100% !important;
+    box-sizing:border-box !important;
+    overflow:hidden !important;
+  }
+  /* 3. Total Software Fees: full width, centered, no cutoff */
+  .sw-total-v2{
+    grid-column:1/-1 !important;
+    width:100% !important;
+    box-sizing:border-box !important;
+    max-width:100% !important;
+    margin:0 !important;
+  }
+  /* 4. Compare: list collapsed by default, toggle via JS */
+  .cmp-list-mobile-hidden{
+    max-height:0 !important;
+    overflow:hidden !important;
+    transition:max-height 0.35s ease !important;
+    margin-top:0 !important;
+  }
+  .cmp-list-mobile-hidden.cmp-list-open{
+    max-height:600px !important;
+  }
+  .cmp-toggle-btn{
+    display:block;
+    width:100%;
+    background:none;
+    border:1px solid rgba(18,24,90,0.18);
+    border-radius:6px;
+    padding:9px 14px;
+    font-family:'Fragment Mono',monospace;
+    font-size:9px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--navy);
+    cursor:pointer;
+    margin-top:10px;
+    text-align:center;
+    transition:background 0.2s,color 0.2s;
+  }
+  .cmp-toggle-btn:hover{background:rgba(18,24,90,0.06);}
+  /* 5. Investment total row: stack label above amount, highlight amount */
+  .invest-tbl tr:last-child{
+    display:block !important;
+    padding:10px 0 !important;
+    border-top:2px solid var(--navy) !important;
+  }
+  .invest-tbl tr:last-child td{
+    display:block !important;
+    width:100% !important;
+    border:none !important;
+    padding:4px 10px !important;
+    text-align:left !important;
+  }
+  .invest-tbl tr:last-child td.invest-price-v2{
+    margin-top:6px !important;
+  }
+  .invest-tbl tr:last-child td.invest-price-v2 strong{
+    display:inline-block;
+    font-size:20px !important;
+    background:rgba(29,158,117,0.28);
+    padding:3px 12px 4px;
+    border-radius:4px;
+  }
+}
+/* Keep 2-per-line at smaller sizes too */
+@media(max-width:480px){
+  .sw-grid-v2{grid-template-columns:repeat(2,1fr) !important;}
+}
 </style>
 
 <section id="cases-section">
@@ -1508,6 +1590,29 @@ function togglePhaseV2(phase){
     accBody.style.maxHeight=accBody.scrollHeight+'px';
   }
 }
+
+/* ── Mobile: compare column toggle (Without AI / With Reystone AI) ── */
+(function initMobileCmpToggle(){
+  if(window.innerWidth > 768) return;
+  document.querySelectorAll('.cmp-col').forEach(col => {
+    const list = col.querySelector('.cmp-list');
+    const lbl = col.querySelector('.cmp-lbl');
+    if(!list || !lbl) return;
+    list.classList.add('cmp-list-mobile-hidden');
+    const btn = document.createElement('button');
+    btn.className = 'cmp-toggle-btn';
+    btn.textContent = 'See breakdown ▾';
+    btn.addEventListener('click', () => {
+      const open = list.classList.toggle('cmp-list-open');
+      btn.textContent = open ? 'Hide breakdown ▴' : 'See breakdown ▾';
+      const accBody = col.closest('.acc-body');
+      if(accBody && accBody.style.maxHeight && accBody.style.maxHeight !== '0px'){
+        setTimeout(() => { accBody.style.maxHeight = accBody.scrollHeight + 'px'; }, 360);
+      }
+    });
+    list.after(btn);
+  });
+})();
 </script>
 </div>
 
