@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reystone AI Consultancy — Houston</title>
+<link rel="icon" type="image/png" href="./favicon.png">
+<link rel="apple-touch-icon" href="./favicon.png">
+<link rel="shortcut icon" href="./favicon.png">
+<meta name="msapplication-TileImage" content="./favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Fragment+Mono&family=Lora:ital@1&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
@@ -519,12 +523,12 @@ footer{background:var(--cream);border-top:1px solid rgba(18,24,90,0.1);padding:5
   border-radius:40px;
   padding:6px 8px;
   margin-top:16px;
-  pointer-events:auto;
+  pointer-events:none;
   opacity:0;
   transform:translateY(-8px);
   transition:opacity 0.4s ease, transform 0.4s ease;
 }
-.nav-pill.show{opacity:1;transform:translateY(0);}
+.nav-pill.show{opacity:1;transform:translateY(0);pointer-events:auto;}
 .nav-link{
   font-family:'Fragment Mono',monospace;
   font-size:9px;letter-spacing:0.14em;text-transform:uppercase;
@@ -955,6 +959,8 @@ function showPage(page, pushState=true){
     if(mobNav){ mobNav.classList.toggle('active', p === page); }
   });
   window.scrollTo(0,0);
+  // Hide desktop nav pill when changing pages (only show via scroll on main)
+  if(navPill) navPill.classList.remove('show');
   if(typeof window._updateBurger === 'function') setTimeout(window._updateBurger, 50);
   // Update URL
   if(pushState){
@@ -1066,10 +1072,10 @@ document.addEventListener('click', e => {
 <div id="page-cases" style="display:none;background:var(--cream);">
 <style>
 /* ══ ADAPTION CASES v2 ══════════════════════════════════════ */
-#cases-section{background:var(--cream);padding:120px 40px 160px;}
+#cases-section{background:var(--cream);padding:120px 40px 200px;height:auto;}
 @media(max-width:768px){
   #cases-section{padding:72px 12px 60px;}
-  .stat-strip{display:none;}
+  #cases-section .stat-strip{display:none !important;}
   .cases-inner{width:100%;padding:0;overflow-x:hidden;}
   .case-card-v2{border-radius:12px;overflow:hidden;}
   /* Stat tiles: stack and enable tap-to-flip on mobile */
@@ -1121,6 +1127,7 @@ document.addEventListener('click', e => {
 /* Blue bubble description under active tab */
 .cases-tab-desc{
   display:none;
+  position:relative;
   margin-top:14px;
   padding:9px 16px;
   background:#0F0D88;
@@ -1132,7 +1139,7 @@ document.addEventListener('click', e => {
   line-height:1.4;
   width:fit-content;
   max-width:420px;
-  position:relative;
+  z-index:1;
 }
 .cases-tab-desc::before{
   content:'';
@@ -1361,7 +1368,7 @@ document.addEventListener('click', e => {
       <!-- Next case CTA -->
       <div class="next-case-cta">
         <div class="next-case-arrow">↓</div>
-        <button class="btn-next-case" onclick="switchCase(1);window.scrollTo({top:0,behavior:'smooth'});">Read next Case Study →</button>
+        <button class="btn-next-case" onclick="switchCase(1);document.getElementById('cases-section').scrollIntoView({behavior:'smooth'});">Read next Case Study →</button>
       </div>
     </div>
 
@@ -1507,7 +1514,7 @@ function togglePhaseV2(phase){
 </div>
 
 <!-- ══ CONTACT ════════════════════════════════════════════════ -->
-<div id="page-contact" style="display:none;background:var(--navy);overflow-x:hidden;">
+<div id="page-contact" style="display:none;background:var(--navy);overflow-x:hidden;min-height:100vh;">
 <style>
 #contact-section{background:var(--navy);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 40px;;overflow-x:hidden;}
 @media(max-width:768px){
