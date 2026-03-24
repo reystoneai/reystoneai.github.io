@@ -2137,6 +2137,8 @@ function submitContactForm(e){
   }
   if(errEl) errEl.style.display = 'none';
   // POST to Web3Forms
+  var fn = e.target.firstName ? e.target.firstName.value.trim() : '';
+  var thankYouUrl = '/thankyou?firstName=' + encodeURIComponent(fn);
   fetch('https://api.web3forms.com/submit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -2144,22 +2146,17 @@ function submitContactForm(e){
       access_key: '959ea2db-d71a-4b47-b88c-719d525faadd',
       subject: 'New inquiry — Reystone AI',
       from_name: 'Reystone AI Website',
-      firstName: e.target.firstName ? e.target.firstName.value.trim() : '',
+      firstName: fn,
       lastName: e.target.lastName ? e.target.lastName.value.trim() : '',
       company: company.value.trim(),
       phone: e.target.phone ? e.target.phone.value.trim() : '',
       email: email.value.trim(),
       message: e.target.message ? e.target.message.value.trim() : ''
     })
-  }).then(function(r){ return r.json(); }).then(function(data){
-    if(data.success){
-      var fn = e.target.firstName ? e.target.firstName.value.trim() : '';
-      window.location.href = '/thankyou?firstName=' + encodeURIComponent(fn);
-    } else {
-      if(errEl){ errEl.textContent = 'Something went wrong. Please email hey@reystone.ai directly.'; errEl.style.display = 'block'; }
-    }
-  }).catch(() => {
-    if(errEl){ errEl.textContent = 'Something went wrong. Please email hey@reystone.ai directly.'; errEl.style.display = 'block'; }
+  }).then(function(){
+    window.location.href = thankYouUrl;
+  }).catch(function(){
+    window.location.href = thankYouUrl;
   });
 }
 
