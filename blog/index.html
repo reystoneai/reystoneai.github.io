@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjRURFQURFIi8+CiAgPHRleHQgeD0iMTYiIHk9IjIzIiBmb250LWZhbWlseT0iR2VvcmdpYSwgc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxMjE4NUEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlI8L3RleHQ+Cjwvc3ZnPgo=">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reystone AI Journal | AI Strategy, Operations & Leadership Insights</title>
+<meta name="description" content="The Reystone AI Journal — practical AI strategy for founders and operators. Case studies, leadership frameworks, and operational AI insights from Reystone AI Consultancy, Houston TX.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Fragment+Mono&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #12185A;
+  --cream: #EDEADE;
+  --cream-dark: #E2DDD0;
+  --navy-mid: rgba(18,24,90,0.18);
+  --green: #1D9E75;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--navy); }
+
+/* NAV */
+nav {
+  background: var(--cream); border-bottom: 1px solid var(--navy-mid);
+  padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--navy); text-decoration: none; }
+.nav-logo em { font-style: italic; font-weight: 400; }
+.nav-back { font-family: 'Fragment Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--navy); opacity: 0.5; text-decoration: none; transition: opacity 0.2s; }
+.nav-back:hover { opacity: 1; }
+
+/* BLOG HERO */
+.blog-hero {
+  padding: 80px 40px 60px;
+  max-width: 1120px; margin: 0 auto;
+  border-bottom: 1px solid var(--navy-mid);
+}
+.blog-eyebrow { font-family: 'Fragment Mono', monospace; font-size: 10px; letter-spacing: 0.2em; opacity: 0.45; margin-bottom: 16px; }
+.blog-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 64px); font-weight: 400; line-height: 1.1; margin-bottom: 16px; }
+.blog-hero h1 em { font-style: italic; }
+.blog-hero p { font-size: 16px; font-weight: 300; opacity: 0.65; line-height: 1.7; max-width: 540px; }
+
+/* TWO-COLUMN LAYOUT */
+.blog-layout {
+  display: flex;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.blog-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  border-right: 1px solid var(--navy-mid);
+  padding: 40px 24px;
+}
+.blog-sidebar-link {
+  font-family: 'Fragment Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--navy);
+  opacity: 0.5;
+  display: block;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  text-decoration: none;
+  border: none;
+  background: none;
+  text-align: left;
+  width: 100%;
+}
+.blog-sidebar-link:hover,
+.blog-sidebar-link.active {
+  opacity: 1;
+  font-weight: 500;
+}
+
+/* BLOG GRID */
+.blog-content {
+  flex: 1;
+  padding: 0;
+}
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-right: 1px solid var(--navy-mid);
+}
+.blog-card {
+  border-right: 1px solid var(--navy-mid);
+  border-bottom: 1px solid var(--navy-mid);
+  padding: 36px 28px;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+  display: block;
+  color: var(--navy);
+}
+.blog-card:nth-child(2n) { border-right: none; }
+.blog-card:hover { background: var(--cream-dark); }
+
+.blog-card-tag { font-family: 'Fragment Mono', monospace; font-size: 9px; letter-spacing: 0.15em; opacity: 0.4; margin-bottom: 14px; display: block; }
+.blog-card-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; line-height: 1.25; margin-bottom: 12px; }
+.blog-card-title em { font-style: italic; }
+.blog-card-excerpt { font-size: 13px; font-weight: 300; line-height: 1.7; opacity: 0.62; margin-bottom: 20px; }
+.blog-card-meta { font-family: 'Fragment Mono', monospace; font-size: 9px; letter-spacing: 0.1em; opacity: 0.35; }
+
+/* ARTICLE VIEW */
+.article-view { display: none; }
+.article-view.active { display: block; }
+.blog-list-view.hidden { display: none; }
+
+.article-header {
+  max-width: 760px; margin: 0 auto;
+  padding: 72px 40px 48px;
+  border-bottom: 1px solid var(--navy-mid);
+}
+.article-tag { font-family: 'Fragment Mono', monospace; font-size: 10px; letter-spacing: 0.18em; opacity: 0.4; margin-bottom: 20px; display: block; }
+.article-title { font-family: 'Playfair Display', serif; font-size: clamp(30px, 4vw, 52px); font-weight: 400; line-height: 1.1; margin-bottom: 24px; }
+.article-title em { font-style: italic; }
+.article-meta { font-family: 'Fragment Mono', monospace; font-size: 9px; letter-spacing: 0.1em; opacity: 0.35; margin-bottom: 0; }
+
+.article-body {
+  max-width: 720px; margin: 0 auto;
+  padding: 52px 40px 80px;
+}
+.article-body h2 { font-family: 'Playfair Display', serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 400; margin: 44px 0 16px; line-height: 1.2; }
+.article-body h2 em { font-style: italic; }
+.article-body p { font-size: 17px; font-weight: 300; line-height: 1.85; opacity: 0.78; margin-bottom: 22px; }
+.article-body strong { font-weight: 500; opacity: 1; }
+.article-body blockquote {
+  border-left: 3px solid var(--navy); padding-left: 24px; margin: 32px 0;
+  font-family: 'Lora', serif; font-style: italic; font-size: 20px; line-height: 1.6; opacity: 0.7;
+}
+.article-body .stat-callout {
+  background: var(--navy); color: var(--cream); padding: 28px 32px; margin: 36px 0;
+  border-left: none;
+}
+.article-body .stat-callout .stat-num { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 700; line-height: 1; margin-bottom: 8px; color: var(--cream); }
+.article-body .stat-callout p { color: var(--cream); opacity: 0.72; font-size: 15px; margin: 0; }
+
+.article-cta {
+  background: var(--navy); color: var(--cream);
+  padding: 52px 40px; text-align: center;
+}
+.article-cta h3 { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--cream); margin-bottom: 14px; }
+.article-cta p { font-size: 15px; font-weight: 300; color: var(--cream); opacity: 0.65; line-height: 1.7; max-width: 480px; margin: 0 auto 28px; }
+.btn-cream { display: inline-block; background: var(--cream); color: var(--navy); font-family: 'Fragment Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; padding: 14px 28px; border: 1px solid var(--cream); cursor: pointer; text-decoration: none; transition: background 0.2s, color 0.2s; }
+.btn-cream:hover { background: transparent; color: var(--cream); }
+
+.back-link { font-family: 'Fragment Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--navy); opacity: 0.45; cursor: pointer; padding: 20px 40px; display: inline-block; transition: opacity 0.2s; }
+.back-link:hover { opacity: 1; }
+
+footer { background: var(--navy); padding: 32px 40px; text-align: center; }
+footer p { font-family: 'Fragment Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: var(--cream); opacity: 0.25; }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .blog-layout { flex-direction: column; }
+  .blog-sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--navy-mid);
+    padding: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    gap: 16px;
+  }
+  .blog-sidebar-link { display: inline-block; padding: 6px 0; }
+  .blog-grid { grid-template-columns: 1fr; border: none; }
+  .blog-card { border-right: none; }
+  .blog-hero { padding: 52px 20px 36px; }
+  .blog-hero h1 { font-size: clamp(28px, 8vw, 44px); }
+  .article-header { padding: 48px 20px 32px; }
+  .article-title { font-size: clamp(24px, 6vw, 36px); }
+  .article-body { padding: 36px 20px 60px; }
+  .article-body p { font-size: 16px; }
+  .article-body blockquote { font-size: 17px; padding-left: 18px; }
+  .article-body h2 { font-size: clamp(20px, 5vw, 26px); }
+  .stat-callout { padding: 22px 22px; }
+  .stat-callout .stat-num { font-size: 40px; }
+  .back-link { padding: 16px 20px; }
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TQFLQNYZ3G"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-TQFLQNYZ3G');
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><em>Rey</em>Stone <span style="font-family:'Fragment Mono',monospace;font-size:8px;letter-spacing:0.2em;opacity:0.4;margin-left:8px;">AI CONSULTANCY</span></a>
+  <a href="/" class="nav-back">&larr; Back to Site</a>
+</nav>
+
+<!-- BLOG LIST VIEW -->
+<div class="blog-list-view" id="blogList">
+  <div class="blog-hero">
+    <div class="blog-eyebrow">/INSIGHTS &amp; INTELLIGENCE</div>
+    <h1>The Reystone <em>Journal</em></h1>
+    <p>Practical AI strategy for business owners who are serious about growth. No hype. No fluff. Just what works.</p>
+  </div>
+
+  <div class="blog-layout">
+    <!-- SIDEBAR -->
+    <div class="blog-sidebar">
+      <button class="blog-sidebar-link active" onclick="filterPosts('latest', this)">LATEST</button>
+      <button class="blog-sidebar-link" onclick="filterPosts('ai-houston', this)">AI IN HOUSTON</button>
+
+      <button class="blog-sidebar-link" onclick="filterPosts('ai-leadership', this)">AI FOR LEADERSHIP</button>
+      <button class="blog-sidebar-link" onclick="filterPosts('ai-operational-efficiency', this)">AI FOR OPERATIONAL EFFICIENCY</button>
+      <button class="blog-sidebar-link" onclick="filterPosts('ai-startups', this)">AI FOR STARTUPS</button>
+      <button class="blog-sidebar-link" onclick="filterPosts('ai-creative-output', this)">AI FOR CREATIVE OUTPUT</button>
+    </div>
+
+    <!-- CONTENT GRID -->
+    <div class="blog-content">
+      <div class="blog-grid" id="blogGrid">
+        <a class="blog-card" data-category="ai-operational-efficiency ai-startups" onclick="showArticle(0); return false;" href="#">
+          <span class="blog-card-tag">AI STRATEGY &middot; 8 MIN READ</span>
+          <div class="blog-card-title">Why 87% of AI Projects Never Make It to Production &mdash; And What the 5% Do <em>Differently</em></div>
+          <p class="blog-card-excerpt">The data is brutal. Most businesses invest in AI and get nothing back. Here's exactly why &mdash; and what separates the companies pulling away from everyone else.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; REYSTONE AI</span>
+        </a>
+        <a class="blog-card" data-category="ai-operational-efficiency ai-startups" onclick="showArticle(1); return false;" href="#">
+          <span class="blog-card-tag">OPERATIONS &middot; 6 MIN READ</span>
+          <div class="blog-card-title">The Real Cost of Staying Manual: What Your Business Loses Every <em>Month</em> Without AI</div>
+          <p class="blog-card-excerpt">Most business owners think staying manual is the safe choice. The numbers say otherwise. Here's what it's actually costing you.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; REYSTONE AI</span>
+        </a>
+        <a class="blog-card" data-category="ai-leadership ai-startups" onclick="showArticle(2); return false;" href="#">
+          <span class="blog-card-tag">THOUGHT LEADERSHIP &middot; 7 MIN READ</span>
+          <div class="blog-card-title">AI Isn't a Tool. It's an Operating System. <em>Here's the Difference.</em></div>
+          <p class="blog-card-excerpt">Businesses treating AI like software are getting left behind. The ones winning are treating it like infrastructure. Here's what that means in practice.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; REYSTONE AI</span>
+        </a>
+        <a class="blog-card" data-category="ai-houston ai-operational-efficiency" onclick="showArticle(3); return false;" href="#">
+          <span class="blog-card-tag">CASE STUDY &middot; 10 MIN READ</span>
+          <div class="blog-card-title">From $0 to $178K in 30 Days: How We Built a Sales Engine for a <em>Houston Business</em></div>
+          <p class="blog-card-excerpt">No sales department. No leads. No system. Here's the exact AI stack we built &mdash; and the results it delivered in month one.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; REYSTONE AI</span>
+        </a>
+        <a class="blog-card" data-category="ai-operational-efficiency ai-startups" onclick="showArticle(4); return false;" href="#">
+          <span class="blog-card-tag">AI STRATEGY &middot; 6 MIN READ</span>
+          <div class="blog-card-title">The Pilot Trap: Why Most Businesses Are Spending on AI and Getting <em>Nothing Back</em></div>
+          <p class="blog-card-excerpt">You've subscribed to the tools. You've run the tests. Your team is "exploring AI." And your P&L looks exactly the same. Here's why.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; REYSTONE AI</span>
+        </a>
+        <a class="blog-card" data-category="ai-creative-output ai-startups" onclick="showArticle(5); return false;" href="#">
+          <span class="blog-card-tag">CREATIVE AGENCIES &middot; 9 MIN READ</span>
+          <div class="blog-card-title">AI Workflows for Creative Agencies: How to Turn a Boutique Agency Into a <em>6-Figure Powerhouse</em> in 2026</div>
+          <p class="blog-card-excerpt">Creative agencies have an unfair advantage with AI &mdash; if they know how to use it. Here's the exact playbook to scale output, cut overhead, and protect margins.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; REYSTONE AI</span>
+        </a>
+        <a class="blog-card" data-category="ai-houston" onclick="showArticle(6); return false;" href="#">
+          <span class="blog-card-tag">HOUSTON LOCAL &middot; 5 MIN READ</span>
+          <div class="blog-card-title">How Torchy's Tacos Could Use AI to <em>Dominate</em> the Fast-Casual Space in 2026</div>
+          <p class="blog-card-excerpt">From dynamic pricing to predictive inventory and automated guest recovery &mdash; here's what an AI-first operation looks like for Houston's most-loved taco brand.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; REYSTONE AI</span>
+        </a>
+        <a class="blog-card" data-category="ai-houston" onclick="showArticle(7); return false;" href="#">
+          <span class="blog-card-tag">HOUSTON LOCAL &middot; 5 MIN READ</span>
+          <div class="blog-card-title">What Memorial Hermann Could Unlock With AI-Powered <em>Patient Operations</em></div>
+          <p class="blog-card-excerpt">Houston's largest health system processes millions of patient interactions a year. Here's where AI would create the most immediate, measurable impact.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; REYSTONE AI</span>
+        </a>
+        <a class="blog-card" data-category="ai-houston" onclick="showArticle(8); return false;" href="#">
+          <span class="blog-card-tag">HOUSTON LOCAL &middot; 5 MIN READ</span>
+          <div class="blog-card-title">How Camden Property Trust Could Use AI to <em>Cut Leasing Overhead</em> by 40%</div>
+          <p class="blog-card-excerpt">Houston's largest apartment REIT manages thousands of units. Here's the AI stack that could transform their leasing, renewals, and resident experience overnight.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; REYSTONE AI</span>
+        </a>
+        <a class="blog-card" data-category="ai-houston" onclick="showArticle(9); return false;" href="#">
+          <span class="blog-card-tag">HOUSTON LOCAL &middot; 5 MIN READ</span>
+          <div class="blog-card-title">The AI Opportunity Sitting Inside <em>Every Houston Law Firm</em> Right Now</div>
+          <p class="blog-card-excerpt">Houston's legal sector is one of the most operationally bloated industries in the city. Here's what AI-first firms are doing &mdash; and what everyone else is missing.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; REYSTONE AI</span>
+        </a>
+        <a class="blog-card" data-category="ai-leadership" onclick="showArticle(10); return false;" href="#">
+          <span class="blog-card-tag">EDUCATION &middot; 7 MIN READ</span>
+          <div class="blog-card-title">Human Strategy + AI Execution: Why the Best AI Implementations Are Still <em>Built by People</em></div>
+          <p class="blog-card-excerpt">The companies failing at AI have one thing in common: they let the technology lead the strategy. Here's why that's backwards &mdash; and how to fix it.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; REYSTONE AI</span>
+        </a>
+        <a class="blog-card" data-category="ai-startups ai-operational-efficiency" onclick="showArticle(11); return false;" href="#">
+          <span class="blog-card-tag">LEAD GENERATION &middot; 6 MIN READ</span>
+          <div class="blog-card-title">How to Know If Your Business Is Ready for AI &mdash; A <em>10-Minute Self-Assessment</em></div>
+          <p class="blog-card-excerpt">Not every business is ready to deploy AI at scale. But most are more ready than they think. Here's how to find out &mdash; and what to do with the answer.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; REYSTONE AI</span>
+        </a>
+        <!-- NEW POSTS 13-19 -->
+        <a class="blog-card" data-category="ai-leadership" onclick="showArticle(12); return false;" href="#">
+          <span class="blog-card-tag">LEADERSHIP &middot; 8 MIN READ</span>
+          <div class="blog-card-title">The Friday Framework for <em>Potential Maxxing</em></div>
+          <p class="blog-card-excerpt">The 12-question LLM framework that changes how you lead, every Friday. Built for Claude, OpenAI, Perplexity, Grok, and Gemini &mdash; each one calibrated to what that tool does best.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; PIA HOST</span>
+        </a>
+        <a class="blog-card" data-category="ai-leadership ai-operational-efficiency" onclick="showArticle(13); return false;" href="#">
+          <span class="blog-card-tag">LEADERSHIP &middot; 7 MIN READ</span>
+          <div class="blog-card-title">What Do We Do With the <em>Humans</em> on Our Team?</div>
+          <p class="blog-card-excerpt">The question every leader is avoiding. What happens to your team when AI starts doing their jobs? The answer changes everything about how you lead.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; PIA HOST</span>
+        </a>
+        <a class="blog-card" data-category="ai-operational-efficiency" onclick="showArticle(14); return false;" href="#">
+          <span class="blog-card-tag">CASE STUDY &middot; 6 MIN READ</span>
+          <div class="blog-card-title">The Inbox Intelligence System: How a $1,800 Build Recovered <em>$49,920</em> in Annual CEO Time</div>
+          <p class="blog-card-excerpt">A CEO came to me with an overloaded inbox. I almost said no. Built in two hours. 2,773% ROI year one. His mornings are peaceful now.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; PIA HOST</span>
+        </a>
+        <a class="blog-card" data-category="ai-creative-output ai-operational-efficiency" onclick="showArticle(15); return false;" href="#">
+          <span class="blog-card-tag">CASE STUDY &middot; 7 MIN READ</span>
+          <div class="blog-card-title">The AI Content Command Center: How We Replaced a $500K/Year Marketing Team With <em>$280/Month</em></div>
+          <p class="blog-card-excerpt">7 autonomous workflows. 5 platforms. Content published every 8 hours. One human approves at 7am. Here's the exact stack.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; PIA HOST</span>
+        </a>
+        <a class="blog-card" data-category="ai-leadership ai-startups" onclick="showArticle(16); return false;" href="#">
+          <span class="blog-card-tag">FOUNDER STORY &middot; 9 MIN READ</span>
+          <div class="blog-card-title">I Built Hospitality Companies Across the Globe. Here's Why I Came Home to Build <em>AI.</em></div>
+          <p class="blog-card-excerpt">At 20, I moved to a continent I'd never set foot on. At 25, I built a resort in Belize solo. Burned out. Founded Reystone AI. The full story.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; PIA HOST</span>
+        </a>
+        <a class="blog-card" data-category="ai-leadership ai-operational-efficiency" onclick="showArticle(17); return false;" href="#">
+          <span class="blog-card-tag">AI STRATEGY &middot; 6 MIN READ</span>
+          <div class="blog-card-title">Don't Invest in AI. Invest in AI That <em>Works.</em></div>
+          <p class="blog-card-excerpt">Half-built AI systems don't just underperform &mdash; they create AI debt. Here's the difference between AI as R&D spend and AI as a revenue engine.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; PIA HOST</span>
+        </a>
+        <a class="blog-card" data-category="ai-operational-efficiency ai-startups" onclick="showArticle(18); return false;" href="#">
+          <span class="blog-card-tag">AI STRATEGY &middot; 7 MIN READ</span>
+          <div class="blog-card-title">You Can Now Build Something the Size of Rome. Just Not With Your <em>Human Brain Alone.</em></div>
+          <p class="blog-card-excerpt">My AI agents scroll social media at 3am and pull warm leads before I open my laptop. Here's what Claude Code actually changed &mdash; and what it means for operators.</p>
+          <span class="blog-card-meta">MARCH 2026 &middot; PIA HOST</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE VIEW -->
+<div class="article-view" id="articleView">
+  <span class="back-link" onclick="showList()">&larr; All Articles</span>
+  <div id="articleContent"></div>
+  <div class="article-cta">
+    <h3>Ready to close your own gap?</h3>
+    <p>45 min with our Founder. We want to understand your business and your biggest AI opportunities. No pitch, no pressure, no annoying follow-ups.</p>
+    <a class="btn-cream" href="https://calendly.com/piavanrey" target="_blank">Book Discovery Meeting &rarr;</a>
+  </div>
+</div>
+
+<footer><p>&copy; 2026 REYSTONE AI CONSULTANCY &middot; HOUSTON, TX</p></footer>
+
+<script>
+// ── Filter ────────────────────────────────────────────
+function filterPosts(category, btn) {
+  document.querySelectorAll('.blog-sidebar-link').forEach(function(link) {
+    link.classList.remove('active');
+  });
+  btn.classList.add('active');
+  document.querySelectorAll('.blog-card').forEach(function(card) {
+    if (category === 'latest') {
+      card.style.display = 'block';
+    } else {
+      var categories = card.getAttribute('data-category') || '';
+      card.style.display = categories.indexOf(category) !== -1 ? 'block' : 'none';
+    }
+  });
+}
+
+// ── Articles ──────────────────────────────────────────
+const articles = [
+  {
+    tag: "AI STRATEGY \u00b7 8 MIN READ",
+    title: "Why 87% of AI Projects Never Make It to Production \u2014 And What the 5% Do <em>Differently</em>",
+    date: "MARCH 2026",
+    body: `
+      <p>Let's start with the number that should keep every business owner up at night: <strong>87% of AI projects fail to reach full production.</strong> Not fail to perform. Fail to even launch. According to McKinsey's 2025 State of AI report, nearly two thirds of organizations using AI remain permanently stuck in experimentation \u2014 running pilots, subscribing to tools, attending demos \u2014 and never building anything that actually runs their business.</p>
+      <div class="stat-callout"><div class="stat-num">87%</div><p>of AI projects fail to reach full production \u2014 McKinsey, 2025</p></div>
+      <p>This isn't a technology problem. The tools work. GPT-4, Claude, Gemini, Make.com, n8n, Zapier \u2014 the infrastructure for autonomous AI operations has never been more accessible or more powerful. The failure happens upstream, in the gap between having access to AI and knowing how to deploy it as a system.</p>
+      <h2>What "Stuck in Pilot" Actually Looks Like</h2>
+      <p>It looks like a team that uses ChatGPT to write emails. It looks like a CRM with an "AI feature" that nobody configures. It looks like a consultant who delivered a 40-slide deck titled "AI Roadmap" that's been sitting in a shared drive since Q3. It looks like a business owner who says "we're exploring AI" and means it \u2014 but has no idea what the next step actually is.</p>
+      <blockquote>"The problem isn't that businesses don't want AI. It's that nobody handed them the keys to the car and taught them how to drive."</blockquote>
+      <p>The 5% doing it differently share one characteristic: they treated AI as infrastructure, not experimentation. They didn't ask "what can AI do?" They asked "what does our business need to run without us \u2014 and what's the fastest path to building that?" Then they hired people who could actually build it.</p>
+      <h2>The Three Reasons Most AI Projects Die</h2>
+      <p><strong>1. No outcome definition.</strong> Most AI pilots start with a tool, not a goal. "We're going to use AI for marketing" is not a strategy. "We're going to reduce our cost per lead from $47 to under $10 by deploying an autonomous organic lead harvesting workflow by Q2" is a strategy. The difference is specificity \u2014 and the willingness to be held accountable to a number.</p>
+      <p><strong>2. No integration architecture.</strong> AI tools running in isolation don't create leverage. The magic happens when your lead generation feeds your CRM, your CRM feeds your follow-up sequences, your follow-up sequences feed your reporting dashboard, and all of it runs without a human touching it. That's not a tool. That's a system. Building systems requires an architect, not just a user.</p>
+      <p><strong>3. No one owns the outcome.</strong> In most organizations, AI is someone's side project. The marketing manager is "looking into it." The ops director "ran a pilot." The CEO is "supportive but wants to see ROI first." Nobody is accountable. Nobody is building. And so nothing ships.</p>
+      <h2>What the 5% Actually Do</h2>
+      <p>They start with a clear ROI projection \u2014 not a vague estimate, but a specific number: "If we automate this workflow, we save 22 hours a week at $45/hour \u2014 that's $51,480 a year." They use that number as a KPI baseline and refuse to call the project done until it's delivered. They redesign workflows rather than layering AI on top of broken ones. And they bring in people who have built these systems before.</p>
+      <p>The gap between the 5% and everyone else isn't intelligence or budget. It's execution discipline. And execution discipline, it turns out, is exactly what most AI consultancies don't provide \u2014 because most AI consultancies are in the business of advice, not outcomes.</p>
+      <p>That's the gap Reystone was built to close.</p>
+    `
+  },
+  {
+    tag: "OPERATIONS \u00b7 6 MIN READ",
+    title: "The Real Cost of Staying Manual: What Your Business Loses Every <em>Month</em> Without AI",
+    date: "MARCH 2026",
+    body: `
+      <p>There's a version of this conversation where we talk about opportunity cost abstractly. We're not doing that. We're going to put numbers on it \u2014 because the cost of staying manual is not a vague competitive disadvantage. It's a specific, calculable dollar figure that is leaving your business every single month.</p>
+      <h2>The Hidden Payroll You're Already Running</h2>
+      <p>Consider the average Houston SMB with 10 employees. Across admin, sales, customer service, and operations, a conservative estimate puts <strong>35\u201345% of working hours in tasks that AI can fully automate</strong> \u2014 data entry, follow-up emails, scheduling, reporting, lead qualification, invoice processing, internal communication routing.</p>
+      <div class="stat-callout"><div class="stat-num">40%</div><p>of the average employee's working hours are spent on tasks AI can fully automate \u2014 HBR, 2025</p></div>
+      <p>At an average loaded cost of $45/hour per employee, 10 employees burning 40% of their time on automatable tasks equals roughly <strong>$374,400 per year in recoverable labor cost.</strong> Not in layoffs \u2014 in redeployment. Those same people, freed from manual work, become your growth engine.</p>
+      <h2>The Lead Response Problem</h2>
+      <p>Here's one that hits harder: <strong>the average business takes 47 hours to respond to a new lead.</strong> The odds of qualifying a lead drop by 80% if you wait longer than 5 minutes to respond. If your sales team is manually following up \u2014 checking email, building sequences, remembering to call back \u2014 you are losing business every single day, not because your product is worse, but because you were slower.</p>
+      <p>An AI-powered follow-up system responds in under 60 seconds, qualifies the lead through a conversation, schedules the call, and logs everything in your CRM. The cost to build that? A fraction of one lost deal.</p>
+      <h2>The Reporting Tax</h2>
+      <p>Ask any operations manager how long they spend each week pulling reports, formatting spreadsheets, and preparing updates for leadership. The answer is almost always between 4 and 8 hours. At scale, that's an entire working day \u2014 every week \u2014 spent producing information that should be generating itself in real time on a dashboard that updates automatically.</p>
+      <p>This is not a technology problem. The technology exists, is affordable, and works today. It's a prioritization problem \u2014 and the businesses that stop treating AI as a future initiative and start treating it as a current infrastructure investment will compound that advantage every month their competitors hesitate.</p>
+      <h2>What One Month of Inaction Actually Costs</h2>
+      <p>If your business has 5 employees spending 15 hours/week on automatable tasks at $40/hour loaded cost, you're burning $156,000 per year \u2014 or <strong>$13,000 every month</strong> \u2014 on work that doesn't need a human. Multiply that across leads lost to slow follow-up, reports built manually, and customer onboarding done by hand, and the number climbs fast.</p>
+      <p>The question isn't whether you can afford to invest in AI operations. The question is how much longer you can afford not to.</p>
+    `
+  },
+  {
+    tag: "THOUGHT LEADERSHIP \u00b7 7 MIN READ",
+    title: "AI Isn't a Tool. It's an Operating System. <em>Here's the Difference.</em>",
+    date: "MARCH 2026",
+    body: `
+      <p>When most business owners say they're "using AI," what they mean is: someone on their team has a ChatGPT subscription. Maybe they use it to write captions, draft proposals, or summarize meeting notes. That's useful. It's also the equivalent of buying a Formula 1 engine and using it to power a lawnmower.</p>
+      <p>The businesses that are genuinely pulling ahead in 2026 are not using AI as a productivity shortcut for individual employees. They're using it as the operating system that runs their entire business \u2014 autonomously, continuously, and at a scale no human team could match.</p>
+      <h2>The Difference Between a Tool and an Operating System</h2>
+      <p>A tool does something when you tell it to. An operating system runs everything \u2014 whether you're there or not. Your iPhone is a tool. iOS is the operating system that makes it work. Microsoft Word is a tool. Windows is the operating system. You interact with the tool. The operating system runs in the background, coordinating everything, making sure the right things happen at the right time without anyone pressing a button.</p>
+      <blockquote>"The businesses winning with AI aren't using it to do tasks faster. They're using it to run processes that never stop."</blockquote>
+      <p>An AI operating system for your business looks like this: a new lead comes in at 2am. The AI qualifies them through a conversation, scores them against your ideal customer profile, assigns them to the right sales agent with a task list, sends a personalized follow-up sequence, and logs everything in your CRM \u2014 all before your team wakes up. Nobody pressed a button. Nobody sent an email. The system ran.</p>
+      <h2>What This Requires</h2>
+      <p>Building an AI operating system isn't about finding the right tool. It's about systems architecture \u2014 understanding how data flows through your business, where the bottlenecks are, what decisions can be automated, and how to connect the pieces so they work together without human intervention.</p>
+      <p>This is why most businesses fail at AI. They buy tools. They don't build systems. And tools without architecture are just expensive subscriptions.</p>
+      <h2>Where to Start</h2>
+      <p>The best place to start is not with AI \u2014 it's with your workflows. Map every process in your business that happens more than once a week. Identify which ones require human judgment and which ones are rule-based. The rule-based ones \u2014 follow-up, scheduling, reporting, lead routing, invoice processing, onboarding \u2014 are your starting point. Build the system around those first. Then expand.</p>
+      <p>The shift from "using AI tools" to "running an AI operating system" is the single most important competitive move a business can make in 2026. The companies that make it this year will spend the next decade compounding the advantage. The ones that wait will spend the next decade catching up.</p>
+    `
+  },
+  {
+    tag: "CASE STUDY \u00b7 10 MIN READ",
+    title: "From $0 to $178K in 30 Days: How We Built a Sales Engine for a <em>Houston Business</em>",
+    date: "MARCH 2026",
+    body: `
+      <p>When this client came to us, their sales department didn't exist. Not struggling \u2014 nonexistent. Three agents were going door-to-door across Richmond, Texas with no leads, no CRM, no follow-up system, and no data. Occupancy at their 80-office subscription business had dropped from 87% to 62%. The math was brutal.</p>
+      <p>Thirty days after we deployed their AI sales system, they generated $178,000 in gross revenue. Here's exactly what we built.</p>
+      <h2>The Challenge</h2>
+      <p>The business had a strong product \u2014 flexible office space on a subscription model \u2014 and a new building coming online that needed to be filled. But with a team at maximum capacity managing existing clients, there was no bandwidth to build a sales function from scratch. And even if there were, nobody had a system.</p>
+      <div class="stat-callout"><div class="stat-num">62%</div><p>Occupancy at time of engagement \u2014 down from 87%. Every empty office was direct revenue loss.</p></div>
+      <p>The traditional solution would be: hire salespeople, buy lead lists, run ads, and wait 90 days to see if anything sticks. We took a different approach entirely.</p>
+      <h2>What We Built: AI-Powered Lead Harvesting</h2>
+      <p>Before building anything, we ran strategy. We A/B tested organic lead sources against paid Meta leads and cold outbound. The result surprised even us: <strong>organically harvested leads converted 12% higher</strong> than paid leads. People already searching for exactly what this business offered were better prospects than anyone we could advertise to.</p>
+      <p>So we built an autonomous AI workflow that does what a team of 10 researchers would do manually \u2014 continuously monitoring hundreds of channels (Craigslist, Reddit, Google, LinkedIn, local Facebook groups, industry forums) for targeted keywords indicating office space need, extracting lead information, and populating it directly into a connected CRM in real time. Every morning, the sales agents woke up to a qualified, prioritized lead list they didn't have to build.</p>
+      <h2>What We Built: Growth-Level AI CRM</h2>
+      <p>The second system was a custom CRM that didn't just store leads \u2014 it thought about them. Based on the lead's demographic profile, company size, and inquiry context, the CRM automatically recommended the right product tier. Based on behavioral data and time-of-day patterns, it determined the optimal contact window for each lead. And for each agent, each morning, it generated a specific task list: who to call, when, what to say, and why.</p>
+      <p>Agents stopped guessing. They started executing. Average daily outbound calls went from 32 to 71 per agent.</p>
+      <h2>The Results</h2>
+      <div class="stat-callout"><div class="stat-num">$178K</div><p>Gross revenue generated in month one \u2014 from $0. Three agents. One AI system.</p></div>
+      <p>In month one: $178,000 in gross revenue. An 18% lead-to-close rate. A cost per lead of $2.08. A 72% efficiency increase across the sales department. All with three agents \u2014 the same headcount they had before, doing door-to-door with nothing.</p>
+      <p>The difference wasn't the people. It was the system. The right leads, at the right time, with the right information \u2014 delivered automatically, every day, without anyone building a spreadsheet or making a cold call into the void.</p>
+      <p>This is what AI operations looks like when it's built correctly. Not a tool. Not a pilot. A system that runs your sales department \u2014 and gets better every month.</p>
+    `
+  },
+  {
+    tag: "AI STRATEGY \u00b7 6 MIN READ",
+    title: "The Pilot Trap: Why Most Businesses Are Spending on AI and Getting <em>Nothing Back</em>",
+    date: "MARCH 2026",
+    body: `
+      <p>There's a name for what most businesses are doing with AI right now: pilot purgatory. You've subscribed to the tools. You've run the experiments. Someone on your team went to an AI workshop. You've had the conversation about "what this could mean for the business." And your revenue looks exactly the same as it did before any of that happened.</p>
+      <p>You're not alone. According to BCG's 2025 research, <strong>60% of businesses generate no material value from AI despite investing in it.</strong> The technology works. The investment is real. The results aren't there. So what's going wrong?</p>
+      <h2>The Tool Subscription Trap</h2>
+      <p>The AI industry has done a masterful job of making tool adoption feel like strategic progress. Subscribed to ChatGPT Plus? You're an AI company now. Turned on Copilot in Microsoft 365? Transformative. Added an AI chatbot to your website? Cutting edge. None of these are wrong. All of them are table stakes. None of them are systems.</p>
+      <blockquote>"Subscribing to AI tools is not an AI strategy. It's an AI expense."</blockquote>
+      <p>The trap is that tool adoption creates the feeling of progress without the substance of it. Teams feel productive. Leadership feels modern. Nobody is measuring whether any of it is moving the P&L.</p>
+      <h2>The Pilot Loop</h2>
+      <p>The second trap is the pilot that never ends. A team identifies a use case \u2014 let's say automating customer follow-up. They test it for 30 days. It works. Leadership says "great, let's scale it." Three months later, it's still running on the same 50 contacts it was tested on, because scaling it requires connecting it to the CRM, training the team, building monitoring dashboards, and solving six integration problems nobody anticipated. Nobody has time for that. The pilot stays a pilot. Forever.</p>
+      <p>This is pilot purgatory. And it's where most AI investment goes to die.</p>
+      <h2>The Way Out</h2>
+      <p>The way out is not more tools or more pilots. It's a commitment to building one complete system \u2014 from lead to close, or from inquiry to onboarding, or from data to decision \u2014 and not stopping until it runs autonomously end to end. That means solving the integration problems. That means redesigning the workflow, not just adding AI to the existing broken one. That means having someone accountable for the outcome, not just the experiment.</p>
+      <p>The businesses escaping pilot purgatory share one thing: they stopped asking "what can AI do for us?" and started asking "what specific outcome do we need, and what's the exact system that delivers it?" That shift in framing \u2014 from exploration to engineering \u2014 is the difference between the 60% getting nothing and the 5% pulling away.</p>
+    `
+  },
+  {
+    tag: "CREATIVE AGENCIES \u00b7 9 MIN READ",
+    title: "AI Workflows for Creative Agencies: How to Turn a Boutique Agency Into a <em>6-Figure Powerhouse</em> in 2026",
+    date: "MARCH 2026",
+    body: `
+      <p>Creative agencies have a problem that doesn't get talked about enough: the work scales badly. You land a great client, you deliver exceptional work, and then the only way to grow revenue is to hire more people \u2014 which means more overhead, more management complexity, and thinner margins. The boutique agency model is, structurally, a ceiling.</p>
+      <p>AI changes that equation entirely. Not by replacing creative talent \u2014 that's not the play \u2014 but by eliminating the operational drag that prevents talented people from doing more of what they're best at.</p>
+      <h2>Where Creative Agencies Leak Time</h2>
+      <p>Before we talk about solutions, let's be specific about the problem. In a typical boutique creative agency, <strong>creative talent spends less than 40% of their time on actual creative work.</strong> The rest goes to: briefing and re-briefing clients, project management and status updates, asset organization and file management, revision tracking, proposal writing, reporting, invoicing, and internal communication. All of that is automatable. None of it requires a designer or a copywriter.</p>
+      <div class="stat-callout"><div class="stat-num">40%</div><p>of creative agency time is spent on actual creative work. The rest is operational drag AI can eliminate.</p></div>
+      <h2>The AI Workflow Stack for Creative Agencies</h2>
+      <p><strong>Client intake and briefing:</strong> An AI-powered intake form that asks the right questions, interprets the brief, flags ambiguities, and generates a structured creative brief automatically \u2014 reducing back-and-forth from days to hours.</p>
+      <p><strong>Project management automation:</strong> AI that reads the brief, creates the project timeline, assigns tasks, sends status updates to clients, and flags when a project is running behind \u2014 without a project manager touching it.</p>
+      <p><strong>Content production workflows:</strong> For agencies doing content at volume \u2014 social, email, ads \u2014 AI drafting pipelines that take a brief, generate first drafts across formats, and route them for human review. Output per person increases 3\u20135x with the same headcount.</p>
+      <p><strong>Reporting and client communication:</strong> Automated monthly reports that pull from your tools, format themselves, and go out to clients on schedule \u2014 eliminating one of the most time-consuming recurring tasks in any agency.</p>
+      <p><strong>Lead generation and nurture:</strong> AI that monitors your target verticals for buying signals, generates personalized outreach, and runs the follow-up sequence until a human needs to get involved. Organic pipeline, running continuously, without a business development hire.</p>
+      <h2>What This Looks Like in Practice</h2>
+      <p>A 5-person boutique agency deploying this stack can realistically handle the operational load of a 12-person agency \u2014 without hiring. That's not a hypothetical. It's the math of eliminating the operational drag that currently consumes 60% of your team's time. The creative capacity you already have gets unlocked. Margins improve. The ceiling lifts.</p>
+      <p>The agencies that build this stack in 2026 will be running circles around competitors twice their size by 2027. The question is whether you build it now or spend the next year watching someone else do it.</p>
+    `
+  },
+  {
+    tag: "HOUSTON LOCAL \u00b7 5 MIN READ",
+    title: "How Torchy's Tacos Could Use AI to <em>Dominate</em> the Fast-Casual Space in 2026",
+    date: "MARCH 2026",
+    body: `
+      <p>Torchy's Tacos has built something rare in the restaurant industry: genuine brand loyalty. Houstonians don't just eat at Torchy's \u2014 they evangelize it. But love for the product only carries a brand so far. In a fast-casual market being reshaped by AI-driven operations, the brands that will lead the next decade are the ones that turn that loyalty into data \u2014 and that data into systems.</p>
+      <p>Here's where AI could move the needle fastest for an operation like Torchy's.</p>
+      <h2>Dynamic Menu Pricing</h2>
+      <p>Fast-casual pricing has historically been static \u2014 the same price at 11am on a Tuesday as at 7pm on a Friday. AI-powered dynamic pricing changes that, adjusting prices in real time based on demand, time of day, weather, local events, and inventory levels. For a high-volume operation like Torchy's, even a 3\u20135% revenue lift from smarter pricing represents millions of dollars annually.</p>
+      <h2>Predictive Inventory Management</h2>
+      <p>Food waste is one of the most expensive problems in restaurant operations. AI models trained on historical sales data, weather patterns, and local event calendars can predict demand by item, by location, by hour \u2014 reducing over-ordering, cutting waste, and ensuring the Dam Dam is always available when someone needs it most.</p>
+      <h2>Automated Guest Recovery</h2>
+      <p>Every negative review, every complaint, every "the queso was cold" moment is a recovery opportunity. AI-powered guest recovery systems monitor reviews across platforms, generate personalized responses, and trigger outreach with a recovery offer \u2014 all automatically, within minutes of a complaint being posted. For a brand with Torchy's' footprint, this is a significant retention lever.</p>
+      <h2>Loyalty Program Intelligence</h2>
+      <p>Most loyalty programs are points systems masquerading as relationships. AI can turn transaction data into genuine personalization \u2014 knowing that this customer always orders the Trailer Park on Tuesdays, that they haven't visited in 3 weeks, and that a well-timed offer would bring them back. Not generic. Personal. Automatic.</p>
+      <p>Torchy's already has the brand. AI gives them the engine to compound it.</p>
+    `
+  },
+  {
+    tag: "HOUSTON LOCAL \u00b7 5 MIN READ",
+    title: "What Memorial Hermann Could Unlock With AI-Powered <em>Patient Operations</em>",
+    date: "MARCH 2026",
+    body: `
+      <p>Memorial Hermann is Houston's largest not-for-profit health system \u2014 17 hospitals, thousands of physicians, and millions of patient interactions a year. At that scale, operational inefficiency isn't a minor inconvenience. It's a compounding cost that affects patient outcomes, staff retention, and financial sustainability simultaneously.</p>
+      <p>AI doesn't solve clinical problems. But it solves operational ones \u2014 and in healthcare, operational problems are often the ones that determine whether a patient gets the right care at the right time.</p>
+      <h2>Scheduling and No-Show Reduction</h2>
+      <p>No-shows cost the US healthcare system an estimated $150 billion annually. AI-powered scheduling systems that identify high no-show risk patients and trigger proactive outreach \u2014 a call, a text, a reschedule offer \u2014 can reduce no-show rates by 30\u201340%. For a system with Memorial Hermann's appointment volume, that's a material revenue and capacity impact.</p>
+      <h2>Prior Authorization Automation</h2>
+      <p>Prior authorization is one of the most administratively burdensome processes in healthcare. Physicians and staff spend an estimated 14 hours per week per physician navigating payer requirements. AI can automate the majority of standard prior auth requests \u2014 pulling the right clinical documentation, submitting to the right payer, and flagging only the complex cases for human review. The hours recovered go back to patient care.</p>
+      <h2>Discharge and Readmission Prevention</h2>
+      <p>Hospital readmissions within 30 days are costly, penalized by CMS, and often preventable. AI models trained on patient history, social determinants of health, and discharge patterns can flag high-readmission-risk patients before discharge and trigger the right follow-up protocols automatically. Better outcomes. Lower cost. Fewer penalties.</p>
+      <p>The technology to do all of this exists today. The question for a system like Memorial Hermann is not whether AI can help \u2014 it's which workflows to tackle first to generate the fastest, most measurable ROI.</p>
+    `
+  },
+  {
+    tag: "HOUSTON LOCAL \u00b7 5 MIN READ",
+    title: "How Camden Property Trust Could Use AI to <em>Cut Leasing Overhead</em> by 40%",
+    date: "MARCH 2026",
+    body: `
+      <p>Camden Property Trust manages over 58,000 apartment homes across the US, with a significant presence in Houston. At that scale, the math on operational efficiency is simple: shave 1% of cost out of leasing operations and you're talking about millions of dollars annually. AI doesn't shave 1%. It shaves 30\u201340%. Here's where.</p>
+      <h2>AI-Powered Lead Qualification</h2>
+      <p>The leasing funnel for a large multifamily operator is wide at the top and lossy throughout. Inquiries come in from dozens of sources \u2014 ILS platforms, direct website, referrals, walk-ins \u2014 and the vast majority require manual follow-up before they're qualified. AI can handle the entire top-of-funnel: responding to inquiries within seconds, qualifying prospects against income and credit criteria, answering FAQ about units and availability, and scheduling tours \u2014 all without a leasing agent touching the interaction.</p>
+      <h2>Renewal Prediction and Proactive Outreach</h2>
+      <p>Resident turnover is one of the most expensive line items in multifamily operations \u2014 vacancy loss, make-ready costs, and new leasing commissions add up fast. AI models trained on resident behavior data can predict renewal likelihood 90\u2013120 days out, triggering personalized outreach to at-risk residents before they've decided to leave. A well-timed conversation \u2014 and the right offer \u2014 changes the outcome.</p>
+      <h2>Maintenance Request Intelligence</h2>
+      <p>AI-powered maintenance triage can categorize incoming requests, route them to the right vendor or in-house tech, predict parts needed, and schedule the visit \u2014 reducing the average resolution time and the administrative load on property managers who currently handle this manually.</p>
+      <p>For an operator like Camden, AI isn't a nice-to-have. At their scale, it's a competitive necessity \u2014 and the operators who build these systems now will have a structural cost advantage that compounds for years.</p>
+    `
+  },
+  {
+    tag: "HOUSTON LOCAL \u00b7 5 MIN READ",
+    title: "The AI Opportunity Sitting Inside <em>Every Houston Law Firm</em> Right Now",
+    date: "MARCH 2026",
+    body: `
+      <p>Houston's legal sector is one of the most operationally dense industries in the city \u2014 high-value work, high billable rate expectations, and an administrative infrastructure that hasn't fundamentally changed in 30 years. The firms that figure out AI first won't just be more efficient. They'll be able to offer services their competitors structurally cannot, at prices that make no sense until you understand the cost base underneath them.</p>
+      <h2>Document Review and Contract Analysis</h2>
+      <p>Document review is the single largest consumer of associate time in litigation and transactional practices. AI-powered review tools can process thousands of documents in hours \u2014 flagging relevant clauses, inconsistencies, and risk factors with accuracy that matches or exceeds junior associate review. The economics are stark: work that took 40 hours now takes 4. That time gets reinvested in higher-value work, or passed to the client as a cost reduction.</p>
+      <h2>Client Intake and Matter Management</h2>
+      <p>The client intake process at most Houston law firms involves a phone call, a paper form or PDF, manual data entry into a case management system, and a follow-up call to gather missing information. Every step of that is automatable. AI-powered intake workflows gather information conversationally, populate the case management system, generate the engagement letter, and trigger the conflict check \u2014 before a human at the firm has touched the matter.</p>
+      <h2>Legal Research Acceleration</h2>
+      <p>AI research tools don't replace legal judgment \u2014 they accelerate the research that informs it. Associates spending 6 hours on a memo now spend 2. The difference isn't lower quality; it's faster turnaround and more bandwidth for the analysis that actually requires a trained legal mind.</p>
+      <blockquote>"The first Houston law firm to build a fully AI-integrated practice will be able to undercut competitors on price and over-deliver on speed. That firm wins the next decade."</blockquote>
+      <p>The barrier isn't technology. It's the willingness to redesign workflows that have worked "well enough" for decades. The firms that cross that threshold in 2026 will look like they have an unfair advantage by 2028. Because they will.</p>
+    `
+  },
+  {
+    tag: "EDUCATION \u00b7 7 MIN READ",
+    title: "Human Strategy + AI Execution: Why the Best AI Implementations Are Still <em>Built by People</em>",
+    date: "MARCH 2026",
+    body: `
+      <p>There's a version of the AI narrative that goes: the machines are taking over, human judgment is becoming obsolete, and the future belongs to whoever has the best models. That version makes for compelling headlines. It's also wrong \u2014 or at least, it's wrong in the way that matters for building a business.</p>
+      <p>The most successful AI implementations in the world \u2014 the ones actually generating measurable ROI at scale \u2014 share a counterintuitive characteristic: they were designed by humans who understood the business deeply before they touched a single AI tool.</p>
+      <h2>Why Strategy Has to Come First</h2>
+      <p>AI is extraordinarily good at execution. Given a well-defined workflow, clear inputs, and a measurable output, AI can run that workflow faster, cheaper, and more consistently than any human team. But AI cannot define the workflow. It cannot identify which of your business processes are worth automating. It cannot understand the political dynamics of your organization, the nuances of your customer relationships, or the specific competitive context that makes one workflow more valuable than another.</p>
+      <blockquote>"The businesses failing at AI gave the technology the strategy job. The businesses winning gave the strategy job to humans \u2014 and the execution job to AI."</blockquote>
+      <p>This is not a limitation of current AI. It's a feature of how intelligence \u2014 artificial or human \u2014 works. AI is a force multiplier. But you have to aim it at something worth multiplying.</p>
+      <h2>What Good Human Strategy Looks Like</h2>
+      <p>Good human strategy for AI implementation starts with a business problem, not a technology solution. It asks: where are we losing the most time, money, or deals? What decisions are we making slowly that could be made instantly? What processes run on tribal knowledge that should be running on documented logic? The answers to those questions tell you where to aim the AI \u2014 and in what order.</p>
+      <p>The best AI implementations we've built at Reystone started with days of workflow mapping, stakeholder interviews, and ROI modeling \u2014 before anyone wrote a single line of automation. That upfront investment in human thinking is precisely what allowed the AI execution to deliver measurable results from week one.</p>
+      <h2>The Partnership Model</h2>
+      <p>The future of AI in business is not humans versus machines. It's humans doing what humans are uniquely good at \u2014 judgment, relationships, creativity, context \u2014 and machines doing what machines are uniquely good at \u2014 speed, consistency, scale, and tirelessness. The businesses that build that partnership deliberately, rather than waiting for it to happen accidentally, will compound the advantage every year.</p>
+    `
+  },
+  {
+    tag: "LEAD GENERATION \u00b7 6 MIN READ",
+    title: "How to Know If Your Business Is Ready for AI \u2014 A <em>10-Minute Self-Assessment</em>",
+    date: "MARCH 2026",
+    body: `
+      <p>One of the most common things we hear from business owners considering AI investment is: "We're not ready yet." Sometimes that's true. More often, it's a way of avoiding a decision that feels overwhelming. The reality is that most businesses are more ready than they think \u2014 they just don't have a framework for figuring out where to start.</p>
+      <p>Here's a 10-minute assessment. Answer honestly.</p>
+      <h2>Section 1: Operations</h2>
+      <p><strong>Do you have processes that happen more than 3 times a week and follow a consistent pattern?</strong> If yes, those are candidates for automation. Examples: sending follow-up emails, pulling weekly reports, updating a CRM after calls, processing invoices, scheduling appointments.</p>
+      <p><strong>Are there tasks your team does manually that involve copying data from one system to another?</strong> If yes, that's a direct automation opportunity. Data transfer between systems is one of the highest-ROI AI applications \u2014 and one of the most common sources of error and wasted time.</p>
+      <h2>Section 2: Sales and Marketing</h2>
+      <p><strong>How long does it take your business to respond to a new lead?</strong> If the answer is more than 5 minutes, you're losing deals. An AI-powered response system can respond in under 60 seconds, 24/7. The ROI on this alone often justifies the entire cost of an AI engagement.</p>
+      <p><strong>Do you have a defined follow-up sequence for leads who don't convert immediately?</strong> If not, you have a lead nurture problem \u2014 and AI solves it completely. Automated sequences that run for 30, 60, or 90 days, personalizing messages based on behavior, are table stakes for any sales operation in 2026.</p>
+      <h2>Section 3: Data and Decisions</h2>
+      <p><strong>Do you know, in real time, what your revenue looks like today versus last week versus 90 days ago?</strong> If accessing that information requires pulling a report, calling someone, or waiting until the end of the month, you're making decisions with a blindfold on. AI-powered dashboards eliminate this entirely.</p>
+      <div class="stat-callout"><div class="stat-num">3</div><p>If you answered "yes" to 3 or more of these questions, you have enough to start. You don't need to be ready. You need a starting point.</p></div>
+      <h2>What to Do With Your Results</h2>
+      <p>If you answered yes to 3 or more of the above, your business has enough operational surface area to justify an AI engagement today. The question isn't readiness \u2014 it's prioritization. Which workflow, if automated, would create the most immediate impact on your revenue or cost base? Start there. Build one complete system. Measure it. Then expand.</p>
+      <p>The businesses that are "not ready yet" in 2026 will be saying the same thing in 2027 \u2014 while their competitors run laps around them with systems that took 6 weeks to build and will run for years.</p>
+    `
+  },
+  // ── NEW POSTS (12-18) ──────────────────────────────────
+  {
+    tag: "LEADERSHIP \u00b7 8 MIN READ",
+    title: "The Friday Framework for <em>Potential Maxxing</em>",
+    date: "MARCH 2026",
+    body: `
+      <p>Every Friday, I sit down with five different AI tools and ask them the same 12 questions about my leadership, my business, and my blind spots. Not because any single model has the answer \u2014 but because the pattern across all five tells me something no individual advisor ever could.</p>
+      <p>This is the Friday Framework. It's not a productivity hack. It's a leadership operating system \u2014 a structured practice for forcing clarity on the questions most founders avoid all week.</p>
+      <h2>Why Five Models, Not One</h2>
+      <p>Each LLM has a different cognitive signature. <strong>Claude</strong> excels at nuanced strategic thinking and ethical reasoning \u2014 I use it for the hard "should we" questions. <strong>ChatGPT</strong> is strong on breadth and pattern matching across industries \u2014 ideal for competitive landscape questions. <strong>Perplexity</strong> grounds answers in real-time data and citations \u2014 I use it for market intelligence and trend validation. <strong>Grok</strong> is contrarian by design \u2014 useful for stress-testing assumptions and surfacing what I'm wrong about. <strong>Gemini</strong> is strong on synthesis and connecting disparate ideas \u2014 I use it for the "what am I not seeing" questions.</p>
+      <p>Running the same question through all five isn't redundancy. It's triangulation. When four out of five models converge on the same insight, pay attention. When one model diverges, that's where the real learning happens.</p>
+      <h2>The 12 Questions</h2>
+      <p><strong>1. What is the single highest-leverage action I could take next week?</strong> Not the most urgent \u2014 the highest leverage. These are different things, and most leaders spend their weeks on urgency, not leverage.</p>
+      <p><strong>2. What am I avoiding right now?</strong> Every founder has a thing they know they should address but haven't. This question forces it into the open.</p>
+      <p><strong>3. What would my smartest competitor do if they had my resources?</strong> This reframes your position from inside-out to outside-in. The answers are often uncomfortable.</p>
+      <p><strong>4. Where am I spending time that isn't generating revenue or building systems?</strong> Time audit by AI. It's faster and more honest than doing it yourself.</p>
+      <p><strong>5. What's the biggest risk to my business that I'm currently underweighting?</strong> Founders are optimists by nature. This question corrects for that.</p>
+      <p><strong>6. If I had to cut my workweek to 20 hours, what would I stop doing?</strong> The constraint reveals what's essential versus what's habitual.</p>
+      <p><strong>7. What skill gap is most limiting my business right now?</strong> Not your team's gaps \u2014 yours. Leaders are the bottleneck more often than they admit.</p>
+      <p><strong>8. What's the most important conversation I'm not having?</strong> With a client, a team member, a partner, or yourself.</p>
+      <p><strong>9. What would I do differently if I knew I couldn't fail?</strong> This surfaces the bold moves fear is suppressing.</p>
+      <p><strong>10. What's working that I should double down on?</strong> Founders obsess over what's broken. This question redirects attention to what's already working.</p>
+      <p><strong>11. What should I delegate or automate this week that I'm still doing manually?</strong> The answer to this question, every week, compounds into extraordinary operational leverage over time.</p>
+      <p><strong>12. What would make next week a 10/10?</strong> Clarity on what "great" looks like makes it more likely to happen.</p>
+      <h2>How to Use the Output</h2>
+      <p>The framework isn't about getting answers. It's about generating signal. Read the responses. Notice where models agree. Notice where they diverge. Notice what surprises you. Then pick the one or two insights that hit hardest and build your week around them. That's it. Thirty minutes of structured reflection, calibrated by five different forms of intelligence, every Friday. The compounding effect over a year is transformational.</p>
+    `
+  },
+  {
+    tag: "LEADERSHIP \u00b7 7 MIN READ",
+    title: "What Do We Do With the <em>Humans</em> on Our Team?",
+    date: "MARCH 2026",
+    body: `
+      <p>This is the question I hear in every discovery meeting, usually said quietly, usually after the door is closed: "If AI can do all of this\u2026 what happens to my team?"</p>
+      <p>It's the right question. And most AI consultants dodge it because the honest answer is complicated. Here's the honest answer.</p>
+      <h2>The Uncomfortable Truth</h2>
+      <p>Some roles \u2014 as they exist today \u2014 will not survive the next three years. Data entry clerks. Scheduling coordinators. Report compilers. First-level customer service agents who read from scripts. These roles are not being "threatened" by AI. They are being <strong>fully replaced</strong> by systems that do the same work in seconds, 24 hours a day, with zero errors and zero salary.</p>
+      <p>But here's what the fear narrative gets wrong: the people in those roles are not replaceable. Their roles are. And there is a massive, critical difference between the two.</p>
+      <div class="stat-callout"><div class="stat-num">65%</div><p>of jobs will be significantly transformed by AI by 2030 \u2014 but less than 5% will be fully eliminated. The rest will be redesigned. \u2014 World Economic Forum, 2025</p></div>
+      <h2>The Redeployment Framework</h2>
+      <p>The best leaders I've worked with don't ask "who do I cut?" They ask "what should these people be doing instead?" When you automate the repetitive, rule-based work that consumes 40\u201360% of your team's time, you don't get fewer people. You get people with capacity. The question becomes: what do you point that capacity at?</p>
+      <p><strong>Customer relationships.</strong> AI can qualify a lead, but only a human can build trust. The salesperson freed from manual CRM updates can spend that time in conversations that close deals.</p>
+      <p><strong>Strategy and judgment.</strong> The operations manager freed from weekly report building can spend that time analyzing what the reports mean and making better decisions.</p>
+      <p><strong>Creative problem-solving.</strong> The marketing coordinator freed from scheduling posts can spend that time understanding what content actually resonates and why.</p>
+      <h2>What This Requires From Leaders</h2>
+      <p>Redeployment doesn't happen automatically. It requires leaders who are willing to have hard conversations about role redesign. It requires investment in training \u2014 not on AI tools, but on the higher-order skills that AI can't do. It requires a willingness to redefine what "productive" means in your organization.</p>
+      <p>The companies that handle the human question well will have a compounding advantage: they'll have AI-powered operations AND a team that's fully utilized on high-value work. The companies that handle it badly \u2014 either by ignoring AI entirely or by treating it as a blunt headcount reduction tool \u2014 will lose both ways.</p>
+      <p>Your team is your most valuable asset. AI doesn't change that. It changes what they should be doing. The leader's job is to figure out the what \u2014 and then build the system that makes it possible.</p>
+    `
+  },
+  {
+    tag: "CASE STUDY \u00b7 6 MIN READ",
+    title: "The Inbox Intelligence System: How a $1,800 Build Recovered <em>$49,920</em> in Annual CEO Time",
+    date: "MARCH 2026",
+    body: `
+      <p>A CEO came to me with a problem I almost turned down: his inbox was destroying his mornings. 200+ emails a day. Two hours minimum just triaging \u2014 before any real work began. He'd tried filters, labels, assistants. Nothing worked because the problem wasn't organization. It was cognition. Every email required a decision: respond, delegate, defer, delete. Two hundred micro-decisions before 10am.</p>
+      <p>I built him a system in two hours. Total cost: $1,800 including setup, testing, and training. Annual value recovered: $49,920.</p>
+      <div class="stat-callout"><div class="stat-num">2,773%</div><p>Year-one ROI. $1,800 build cost. $49,920 in recovered CEO time annually.</p></div>
+      <h2>What the System Does</h2>
+      <p>The Inbox Intelligence System is an AI workflow that sits between the CEO's inbox and his attention. Every incoming email gets processed through a classification layer that understands context, sender history, urgency signals, and the CEO's priorities. The system then does one of four things:</p>
+      <p><strong>Auto-responds</strong> to routine inquiries using the CEO's voice and communication style \u2014 meeting confirmations, information requests, vendor follow-ups. These never reach the inbox.</p>
+      <p><strong>Delegates</strong> action items to the appropriate team member with a summary and suggested response, CC'ing the CEO only if needed.</p>
+      <p><strong>Surfaces</strong> the 15\u201320 emails per day that actually require the CEO's judgment \u2014 with context summaries, suggested responses, and priority rankings.</p>
+      <p><strong>Archives</strong> newsletters, notifications, and low-priority items into a searchable digest the CEO can review once a week if he wants to.</p>
+      <h2>The Result</h2>
+      <p>Two hours per day returned. That's 10 hours per week, 520 hours per year. At this CEO's effective hourly value of $96/hour, that's <strong>$49,920 in annual recovered time</strong> \u2014 time that now goes to strategy, client relationships, and the decisions that actually move the business.</p>
+      <p>His mornings are peaceful now. He opens his laptop to a curated list of things that genuinely need him \u2014 not a wall of noise that drains his cognitive capacity before the day begins.</p>
+      <h2>Why This Matters Beyond One CEO</h2>
+      <p>The inbox problem is universal. Every knowledge worker loses time to email triage. But for CEOs and founders, the cost is asymmetric \u2014 their time is the most expensive and least replaceable resource in the business. A system that recovers two hours of CEO time daily is not an inbox tool. It's a strategic asset.</p>
+      <p>And it took two hours to build.</p>
+    `
+  },
+  {
+    tag: "CASE STUDY \u00b7 7 MIN READ",
+    title: "The AI Content Command Center: How We Replaced a $500K/Year Marketing Team With <em>$280/Month</em>",
+    date: "MARCH 2026",
+    body: `
+      <p>A mid-size business running a real content operation \u2014 graphic designers, a copywriter, a social media manager, a creative director, a videographer \u2014 is looking at between $460,000 and $520,000 per year in base salary alone. Before benefits. Before overhead. Before the cost of the content that doesn't get made because someone is on vacation, or sick, or burned out.</p>
+      <p>We built a system that does the same job \u2014 continuously, across five platforms, publishing every eight hours \u2014 for $280 per month in software costs. Here's the exact stack.</p>
+      <div class="stat-callout"><div class="stat-num">$280</div><p>Monthly software cost for an autonomous content operation that replaces a $500K/year marketing team.</p></div>
+      <h2>The 7 Autonomous Workflows</h2>
+      <p><strong>Phase 1 \u2014 Research:</strong> AI agents monitor industry trends, competitor content, news sources, and social signals 24/7. Every morning, the system delivers a research brief with the highest-opportunity content angles for the day.</p>
+      <p><strong>Phase 2 \u2014 Relate:</strong> Each research insight gets filtered through the brand's voice guidelines, audience profiles, and strategic priorities. The system evaluates which angles align with the brand and which don't \u2014 before any content is created.</p>
+      <p><strong>Phase 3 \u2014 Create:</strong> Approved angles get turned into platform-specific content \u2014 LinkedIn posts, Instagram carousels, Twitter threads, blog drafts, email newsletter copy. Each piece is generated in the brand's voice, formatted for the platform, and queued for review.</p>
+      <p><strong>Phase 4 \u2014 Digest:</strong> Every morning at 7am, the human operator receives a review digest \u2014 all content created overnight, organized by platform, with one-click approve/edit/reject controls.</p>
+      <p><strong>Phase 5 \u2014 Publish:</strong> Approved content publishes automatically across all connected platforms on an optimized schedule. No manual posting. No copy-pasting between tools.</p>
+      <p><strong>Phase 6 \u2014 Feedback:</strong> Performance data flows back into the system \u2014 engagement rates, click-throughs, audience growth. The AI learns what works and adjusts future content production accordingly.</p>
+      <p><strong>Phase 7 \u2014 Library:</strong> All content, assets, and performance data are automatically organized in a searchable content library that grows smarter over time.</p>
+      <h2>What a Human Does in This System</h2>
+      <p>One person. Fifteen minutes a day. They review the morning digest, approve or tweak the content, and handle the occasional edge case that requires genuine human judgment. Everything else \u2014 the research, the writing, the formatting, the scheduling, the publishing, the analytics \u2014 runs autonomously.</p>
+      <p>This isn't about replacing creative people. It's about asking whether the $500K you're spending on content production is buying you strategy and judgment \u2014 or process and repetition. If it's the latter, there's a better way.</p>
+    `
+  },
+  {
+    tag: "FOUNDER STORY \u00b7 9 MIN READ",
+    title: "I Built Hospitality Companies Across the Globe. Here's Why I Came Home to Build <em>AI.</em>",
+    date: "MARCH 2026",
+    body: `
+      <p>At 20, I moved to a continent I'd never set foot on. I didn't speak the language. I didn't have a network. I had a one-way ticket and an unshakeable belief that I could build something from nothing if I just refused to stop moving forward.</p>
+      <p>By 25, I had built a boutique resort in Belize \u2014 from the ground up. Found the land. Negotiated the deal. Designed the experience. Managed the construction. Hired the team. Marketed it. Ran it. Every piece of a hospitality business, built by one person who didn't know the word "no" in any language.</p>
+      <h2>What Hospitality Teaches You About Systems</h2>
+      <p>Hospitality is a systems business masquerading as a people business. Yes, the guest experience is everything. But behind every seamless guest experience is a web of operations \u2014 reservations, housekeeping rotations, inventory management, staff scheduling, vendor relationships, maintenance protocols, revenue management \u2014 that either works flawlessly or doesn't. There is no in-between in hospitality. The guest either has a perfect experience or they don't come back.</p>
+      <p>Building hospitality companies across multiple countries taught me something that would later become the foundation of everything I do with AI: <strong>the quality of the system determines the quality of the outcome.</strong> Not the people. Not the product. The system.</p>
+      <h2>The Burnout and the Pivot</h2>
+      <p>Running hospitality operations across multiple time zones, managing teams in countries with different labor laws, different cultures, different definitions of "on time" \u2014 it breaks you down. Not because the work is hard. Because the work never stops. There is no "closing time" when your properties span the Western Hemisphere. There is no "off" when a pipe bursts in Belize at 2am and you're the only person who can authorize the repair.</p>
+      <p>I burned out. Not dramatically. Slowly. The kind of burnout where you wake up one morning and realize you've built something impressive that you no longer want to run. The systems I'd built were good \u2014 but they still needed me. And I was tired of being needed at 2am.</p>
+      <h2>Why AI</h2>
+      <p>When I encountered what AI could actually do \u2014 not the hype, not the headlines, but the operational reality of autonomous workflows \u2014 I recognized it immediately. This was the answer to the problem I'd been solving by hand for a decade: how do you build systems that run without you?</p>
+      <p>Every hospitality operation I'd built was an attempt to create a machine that delivered a perfect experience consistently, without requiring the founder to be in the room. AI is that machine \u2014 not for hospitality, but for every business. Lead generation that runs at 3am. Content that publishes while you sleep. Customer follow-up that never forgets. Reporting that generates itself. The systems I wished I'd had in Belize.</p>
+      <p>That's why I came home. That's why I built Reystone AI. Not because AI is interesting \u2014 it is \u2014 but because I know what it feels like to run a business where every system depends on you. And I know what it's worth to build ones that don't.</p>
+    `
+  },
+  {
+    tag: "AI STRATEGY \u00b7 6 MIN READ",
+    title: "Don't Invest in AI. Invest in AI That <em>Works.</em>",
+    date: "MARCH 2026",
+    body: `
+      <p>There's a growing category of business expense that nobody talks about: AI debt. It's the accumulation of half-built systems, abandoned pilots, unused subscriptions, and "AI initiatives" that consumed budget, generated enthusiasm, and delivered nothing. It's the $14,000 spent on a chatbot that nobody trained. The $8,000 consulting engagement that produced a roadmap sitting in a shared drive. The $200/month in AI tool subscriptions that three employees use for email drafting and nothing else.</p>
+      <p>AI debt is worse than no AI at all. Because it creates the illusion that you've tried AI and it didn't work \u2014 when what actually happened is that you invested in AI without building a system around it.</p>
+      <div class="stat-callout"><div class="stat-num">74%</div><p>of companies struggle to scale AI beyond the pilot stage. The investment is real. The return isn't. \u2014 BCG, 2025</p></div>
+      <h2>The Difference Between AI Spend and AI Investment</h2>
+      <p><strong>AI spend</strong> is money that goes toward AI without a defined outcome. Tool subscriptions. Consulting engagements that end at "recommendations." Training workshops that don't result in deployed systems. AI spend feels productive. It shows up in board decks as "AI initiatives." It generates zero ROI.</p>
+      <p><strong>AI investment</strong> is money that goes toward building a specific system that delivers a measurable business outcome. An autonomous lead generation workflow that produces X leads per week at Y cost per lead. A content production system that publishes Z pieces per day at a fraction of the previous cost. A customer follow-up sequence that increases response rate from A% to B%.</p>
+      <p>The difference is specificity. AI spend is directional. AI investment is transactional \u2014 you put money in, you get a measurable outcome out.</p>
+      <h2>How to Stop Accumulating AI Debt</h2>
+      <p><strong>Rule 1: No system without a KPI.</strong> Before you build anything, define the number it needs to hit. Cost per lead. Hours saved per week. Revenue generated per month. If you can't name the KPI, you're not ready to build.</p>
+      <p><strong>Rule 2: No pilot without a production path.</strong> Before you test anything, define what production looks like. How does this connect to your existing tools? Who monitors it? What does "done" look like? A pilot without a production path is a guaranteed orphan.</p>
+      <p><strong>Rule 3: One complete system before the next.</strong> The temptation is to experiment across multiple use cases simultaneously. Resist it. Build one system end to end. Prove the ROI. Then use that proof \u2014 and the organizational confidence it creates \u2014 to fund the next one.</p>
+      <h2>AI That Works</h2>
+      <p>AI that works is not the most sophisticated system. It's the system that runs every day, delivers measurable results, and pays for itself within 90 days. It's boring. It's reliable. It's the operational infrastructure that lets you focus on the parts of your business that actually need a human. That's the AI worth investing in.</p>
+    `
+  },
+  {
+    tag: "AI STRATEGY \u00b7 7 MIN READ",
+    title: "You Can Now Build Something the Size of Rome. Just Not With Your <em>Human Brain Alone.</em>",
+    date: "MARCH 2026",
+    body: `
+      <p>My AI agents scroll social media at 3am. They're monitoring Reddit, LinkedIn, Craigslist, Facebook groups, and industry forums for signals that someone, somewhere, needs what my clients sell. By the time I open my laptop at 7am, there's a qualified lead list waiting. Scored. Prioritized. Contact information extracted. CRM populated. Follow-up sequence drafted. Ready to go.</p>
+      <p>I didn't do any of that. I was asleep.</p>
+      <h2>What Claude Code Actually Changed</h2>
+      <p>The shift wasn't gradual. It was a step function. Before Claude Code, building an AI workflow meant stitching together APIs, writing integration code, debugging data transformations, and spending days on what should take hours. Claude Code \u2014 and the agentic coding tools that followed \u2014 changed the economics of system building so fundamentally that the limiting factor is no longer technical skill. It's vision.</p>
+      <p>I can now describe a system in natural language and have a working prototype in hours. Not a mockup. Not a wireframe. A working system that processes real data, connects to real APIs, and delivers real output. The gap between "I have an idea for a workflow" and "that workflow is running in production" collapsed from weeks to days to hours.</p>
+      <div class="stat-callout"><div class="stat-num">10x</div><p>The speed multiplier for building AI systems with agentic coding tools. What took weeks now takes hours.</p></div>
+      <h2>What This Means for Operators</h2>
+      <p>If you run a business, the implication is profound: <strong>the systems that used to require a development team can now be built by one person who understands the business.</strong> Not a developer who needs to learn your business. A business person who can now build their own systems. That's the inversion. The domain expert \u2014 the person who knows the workflows, the bottlenecks, the edge cases \u2014 is now the builder.</p>
+      <p>This is what I mean by building something the size of Rome. A single operator, armed with the right AI tools, can now construct and maintain an operational infrastructure that would have required a team of 15 just two years ago. Lead generation. Content production. Customer follow-up. Reporting. Analytics. CRM management. All running autonomously, all built by one person who understands the business deeply enough to design the system correctly.</p>
+      <h2>The New Competitive Landscape</h2>
+      <p>The businesses that understand this shift have an asymmetric advantage. While their competitors are hiring teams to do work manually, they're building systems that do the same work autonomously. While their competitors are in meetings about AI strategy, they're deploying AI systems that generate revenue while they sleep.</p>
+      <p>You can now build something the size of Rome. The constraint isn't technology, budget, or team size. It's whether you can see the blueprint clearly enough to build it. That clarity \u2014 the ability to translate business understanding into system architecture \u2014 is the most valuable skill in business right now. Not coding. Not AI expertise. Business understanding combined with the willingness to build.</p>
+      <p>The tools are here. The question is whether you'll use them to build an empire or watch someone else do it.</p>
+    `
+  }
+];
+
+function showArticle(index) {
+  var article = articles[index];
+  document.getElementById('blogList').classList.add('hidden');
+  document.getElementById('articleView').classList.add('active');
+  document.getElementById('articleContent').innerHTML =
+    '<div class="article-header">' +
+      '<span class="article-tag">' + article.tag + '</span>' +
+      '<h1 class="article-title">' + article.title + '</h1>' +
+      '<span class="article-meta">' + article.date + ' \u00b7 REYSTONE AI CONSULTANCY</span>' +
+    '</div>' +
+    '<div class="article-body">' + article.body + '</div>';
+  window.scrollTo(0, 0);
+}
+
+function showList() {
+  document.getElementById('blogList').classList.remove('hidden');
+  document.getElementById('articleView').classList.remove('active');
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
