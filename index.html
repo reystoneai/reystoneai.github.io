@@ -889,7 +889,7 @@ footer{background:var(--cream);border-top:1px solid rgba(18,24,90,0.1);padding:5
 }
 
 /* ── HERO (Built to last) ── */
-#hero {
+#heroQuality {
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   text-align: center;
@@ -899,7 +899,7 @@ footer{background:var(--cream);border-top:1px solid rgba(18,24,90,0.1);padding:5
 }
 
 /* Animated background grid */
-#hero::before {
+#heroQuality::before {
   content: '';
   position: absolute; inset: 0;
   background-image:
@@ -912,7 +912,7 @@ footer{background:var(--cream);border-top:1px solid rgba(18,24,90,0.1);padding:5
 @keyframes gridFadeIn { to { opacity: 1; } }
 
 /* Radial cream overlay */
-#hero::after {
+#heroQuality::after {
   content: '';
   position: absolute; inset: 0;
   background: radial-gradient(ellipse 70% 60% at 50% 50%, var(--cream) 0%, transparent 100%);
@@ -1362,7 +1362,7 @@ footer {
 }
 
 /* ── 8. Reduced spacing ── */
-#page-quality #hero { padding: 48px 40px 40px !important; }
+#page-quality #heroQuality { padding: 48px 40px 40px !important; }
 #page-quality #timeline { padding: 80px 40px !important; }
 #page-quality .section-hed { margin-bottom: 48px !important; }
 #page-quality .hero-cta { margin-top: 36px !important; }
