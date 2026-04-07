@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Reystone AI Consultancy</title>
+<meta name="description" content="Reystone LLC Privacy Policy. How we collect, use, and protect your information.">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Fragment+Mono&family=Lora:ital@1&display=swap" rel="stylesheet">
+<style>
+:root { --navy: #12185A; --cream: #EDEADE; --green: #1D9E75; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+html, body { max-width: 100%; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--navy); }
+a { color: inherit; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  padding: 22px 40px; background: rgba(237,234,222,0.85); backdrop-filter: blur(12px);
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid rgba(18,24,90,0.06);
+}
+nav a.logo-link { display: inline-block; }
+nav a.logo-link svg { height: 28px; width: auto; }
+nav .nav-links { display: flex; gap: 28px; }
+nav .nav-links a {
+  font-family: 'Fragment Mono', monospace; font-size: 10px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--navy); opacity: 0.55; text-decoration: none;
+  transition: opacity 0.2s;
+}
+nav .nav-links a:hover { opacity: 1; }
+@media (max-width: 768px) { nav { padding: 18px 22px; } nav .nav-links { display: none; } }
+
+/* ── PAGE LAYOUT ── */
+.privacy-wrap {
+  max-width: 760px; margin: 140px auto 80px; padding: 0 40px;
+}
+.privacy-eyebrow {
+  font-family: 'Fragment Mono', monospace; font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; opacity: 0.45; margin-bottom: 16px;
+}
+.privacy-h1 {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: clamp(36px, 5vw, 64px); line-height: 1.1; margin-bottom: 12px;
+}
+.privacy-h1 em { font-style: italic; }
+.privacy-effective {
+  font-family: 'Fragment Mono', monospace; font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; opacity: 0.5; margin-bottom: 48px;
+}
+.privacy-intro {
+  font-family: 'Lora', serif; font-style: italic; font-size: 17px;
+  line-height: 1.7; opacity: 0.72; margin-bottom: 56px; padding-bottom: 40px;
+  border-bottom: 1px solid rgba(18,24,90,0.1);
+}
+.privacy-h2 {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: clamp(20px, 2.4vw, 28px); margin-top: 48px; margin-bottom: 20px;
+  line-height: 1.25;
+}
+.privacy-h3 {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 16px; font-style: italic; margin-top: 24px; margin-bottom: 12px;
+  opacity: 0.85;
+}
+.privacy-wrap p {
+  font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 16px;
+  line-height: 1.85; opacity: 0.75; margin-bottom: 18px;
+}
+.privacy-wrap ul {
+  margin: 12px 0 24px 0; padding-left: 24px;
+}
+.privacy-wrap li {
+  font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 16px;
+  line-height: 1.85; opacity: 0.75; margin-bottom: 8px;
+}
+.privacy-wrap a {
+  color: var(--navy); text-decoration: underline; text-decoration-color: rgba(18,24,90,0.3);
+  text-underline-offset: 3px; transition: text-decoration-color 0.2s;
+}
+.privacy-wrap a:hover { text-decoration-color: var(--navy); }
+.privacy-contact-block {
+  margin-top: 32px; padding: 28px 32px; border-left: 2px solid var(--navy);
+  background: rgba(18,24,90,0.04);
+}
+.privacy-contact-block p { margin-bottom: 6px; opacity: 0.85; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--cream); border-top: 1px solid rgba(18,24,90,0.1);
+  padding: 52px 40px 32px;
+}
+.footer-inner {
+  max-width: 1120px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px;
+  padding-bottom: 40px; border-bottom: 1px solid rgba(18,24,90,0.08);
+}
+@media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr; gap: 32px; } }
+.footer-col-label {
+  font-family: 'Fragment Mono', monospace; font-size: 9px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--navy); opacity: 0.3; margin-bottom: 14px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 9px; }
+.footer-links a {
+  font-family: 'Fragment Mono', monospace; font-size: 10px; letter-spacing: 0.1em;
+  color: var(--navy); opacity: 0.44; text-decoration: none; transition: opacity 0.2s;
+}
+.footer-links a:hover { opacity: 0.85; }
+.footer-desc {
+  font-family: 'Lora', serif; font-style: italic; font-size: 13px;
+  color: var(--navy); opacity: 0.52; line-height: 1.72; margin-bottom: 18px;
+}
+.footer-copy {
+  max-width: 1120px; margin: 28px auto 0;
+  font-family: 'Fragment Mono', monospace; font-size: 9px; letter-spacing: 0.1em;
+  color: var(--navy); opacity: 0.25; text-align: center;
+}
+.footer-logo { display: inline-block; margin-bottom: 18px; }
+.footer-logo svg { height: 32px; width: auto; }
+
+.btn-navy{display:inline-block;background:var(--navy);color:var(--cream);font-family:'Fragment Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;padding:14px 28px;border:1px solid var(--navy);cursor:pointer;text-decoration:none;transition:background 0.2s,color 0.2s;}
+.btn-navy:hover{background:transparent;color:var(--navy);}
+@media (max-width:768px) { .footer-cta-btn { display: none !important; } }
+nav a.logo-link svg, .footer-logo svg { color: var(--navy); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo-link"><svg viewBox="0 0 3241 670" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="ReyStone"><path d="M3.2001 484C37.6001 479.2 57.6001 466.4 61.6001 435.2L104 87.2001C108 56.0001 91.2001 43.2001 57.6001 38.4001L60.8001 12.8001H308.8C413.6 12.8001 479.2 54.4001 479.2 129.6C479.2 205.6 427.2 260 347.2 271.2C341.6 272 340.8 279.2 345.6 280.8C389.6 295.2 410.4 320.8 424 382.4C436 435.2 444 483.2 480 483.2L476 509.6H435.2C348.8 509.6 329.6 468 306.4 373.6C292 312.8 272.8 292 227.2 292C192.8 292 180 305.6 176.8 336L164.8 435.2C160.8 466.4 177.6 479.2 219.2 484L216 509.6H9.76771e-05L3.2001 484ZM192 211.2C188 242.4 197.6 256 228.8 256H262.4C332.8 256 372.8 202.4 372.8 131.2C372.8 84.8001 353.6 45.6001 296 45.6001H260.8C222.4 45.6001 211.2 61.6001 207.2 90.4001L192 211.2ZM681.544 514.4C594.344 514.4 522.344 454.4 522.344 356C522.344 258.4 592.744 140 723.944 140C802.344 140 843.144 181.6 843.144 236C843.144 295.2 794.344 332.8 685.544 352L649.544 358.4C627.144 362.4 620.744 380.8 632.744 405.6C648.744 439.2 678.344 462.4 723.144 462.4C751.944 462.4 783.144 452.8 806.344 428.8L821.544 448.8C799.944 475.2 751.944 514.4 681.544 514.4ZM613.544 306.4C613.544 328 625.544 337.6 647.944 334.4L663.944 332C754.344 318.4 761.544 266.4 761.544 236C761.544 186.4 740.744 168.8 707.944 168.8C647.144 168.8 613.544 232.8 613.544 306.4ZM843.675 669.6C810.075 669.6 782.875 646.4 782.875 610.4C782.875 580 802.875 555.2 834.875 555.2C888.475 555.2 854.075 616.8 893.275 616.8C923.675 616.8 974.875 573.6 1014.08 521.6L943.675 231.2C934.875 194.4 912.475 180 882.075 195.2L885.275 171.2C912.475 148.8 940.475 143.2 959.675 143.2C1002.88 143.2 1024.48 172 1035.68 221.6L1080.48 421.6C1083.68 434.4 1091.68 436.8 1099.68 425.6C1142.08 366.4 1168.48 311.2 1182.88 270.4C1207.68 199.2 1165.28 180 1129.28 195.2L1132.48 171.2C1157.28 153.6 1183.68 143.2 1205.28 143.2C1258.08 143.2 1251.68 203.2 1231.68 248C1166.08 394.4 958.075 669.6 843.675 669.6ZM1445.05 517.6C1377.85 517.6 1318.65 496 1287.45 469.6C1272.25 412.8 1278.65 341.6 1313.85 341.6C1322.65 341.6 1325.05 345.6 1328.25 359.2C1346.65 438.4 1400.25 482.4 1463.45 482.4C1522.65 482.4 1555.45 448 1555.45 403.2C1555.45 345.6 1501.05 326.4 1441.05 306.4C1369.05 282.4 1308.25 238.4 1308.25 159.2C1308.25 62.4001 1396.25 7.82013e-05 1507.45 7.82013e-05C1561.85 7.82013e-05 1621.85 16.0001 1650.65 40.0001C1665.05 96.8001 1658.65 168 1624.25 168C1614.65 168 1611.45 164 1609.05 150.4C1595.45 72.8001 1539.45 33.6001 1486.65 33.6001C1436.25 33.6001 1402.65 69.6001 1402.65 116C1402.65 167.2 1442.65 188.8 1499.45 208C1567.45 231.2 1657.85 262.4 1657.85 360C1657.85 465.6 1556.25 517.6 1445.05 517.6ZM1868.17 513.6C1802.57 513.6 1760.97 478.4 1760.97 405.6V210.4C1760.97 185.6 1754.57 180.8 1739.37 180.8H1702.57V158.4C1759.37 142.4 1788.97 114.4 1814.57 71.2001C1819.37 63.2001 1824.17 60.8001 1832.17 60.8001H1843.37C1852.17 60.8001 1857.77 66.4001 1857.77 75.2001L1856.97 127.2C1856.97 144 1864.17 148.8 1902.57 148.8H1958.57V185.6L1902.57 182.4C1864.17 180 1856.97 187.2 1856.97 212V399.2C1856.97 444.8 1863.37 474.4 1902.57 474.4C1916.97 474.4 1932.17 470.4 1944.97 460C1955.37 471.2 1956.97 480.8 1949.77 487.2C1932.97 502.4 1904.97 513.6 1868.17 513.6ZM2187.04 514.4C2088.64 514.4 1995.04 450.4 1995.04 327.2C1995.04 204 2088.64 141.6 2186.24 141.6C2284.64 141.6 2378.24 205.6 2378.24 328.8C2378.24 452 2284.64 514.4 2187.04 514.4ZM2098.24 294.4C2098.24 396 2139.84 484 2203.04 484C2244.64 484 2275.04 447.2 2275.04 360.8C2275.04 260 2234.24 172 2170.24 172C2127.84 172 2098.24 208.8 2098.24 294.4ZM2789.68 514.4C2748.08 514.4 2717.68 491.2 2717.68 440V295.2C2717.68 240 2690.48 197.6 2640.88 197.6C2590.48 197.6 2561.68 240 2561.68 295.2V433.6C2561.68 470.4 2575.28 481.6 2612.08 484.8V509.6H2414.48V484.8C2452.08 481.6 2465.68 470.4 2465.68 433.6V232C2465.68 195.2 2450.48 185.6 2414.48 188.8V164L2526.48 143.2C2549.68 139.2 2561.68 149.6 2561.68 168C2561.68 196.8 2574.48 204 2584.88 192C2601.68 172 2632.08 140 2695.28 140C2754.48 140 2813.68 168.8 2813.68 276.8V440C2813.68 467.2 2827.28 478.4 2850.48 471.2V485.6C2840.08 506.4 2813.68 514.4 2789.68 514.4ZM3079.24 514.4C2979.24 514.4 2886.44 451.2 2886.44 329.6C2886.44 204 2984.04 141.6 3084.04 141.6C3167.24 141.6 3228.04 184.8 3228.04 250.4C3228.04 314.4 3171.24 324.8 3082.44 330.4L3016.04 334.4C3001.64 335.2 2995.24 342.4 2995.24 360C2995.24 419.2 3056.84 460 3124.04 460C3155.24 460 3193.64 451.2 3221.64 417.6L3240.84 434.4C3225.64 464 3168.84 514.4 3079.24 514.4ZM2990.44 276C2990.44 300.8 2997.64 308.8 3016.84 308L3058.44 305.6C3122.44 301.6 3138.44 288 3138.44 251.2C3138.44 210.4 3119.24 172 3071.24 172C3011.24 172 2990.44 231.2 2990.44 276Z" fill="currentColor"/></svg></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#process">Method</a>
+    <a href="index.html#why">Why Now</a>
+    <a href="mailto:pia@reystone.ai">Contact</a>
+  </div>
+</nav>
+
+<main class="privacy-wrap">
+  <div class="privacy-eyebrow">/ REYSTONE LLC</div>
+  <h1 class="privacy-h1"><em>Privacy</em> Policy</h1>
+  <div class="privacy-effective">Effective Date: April 6, 2026</div>
+
+  <p class="privacy-intro">
+    This Privacy Policy describes how Reystone LLC ("Reystone," "we," "us," or "our") collects, uses, and protects information when you visit our website at reystone.ai, engage with our services, or submit information through our client intake process. By using our website or services, you agree to the practices described in this policy.
+  </p>
+
+  <h2 class="privacy-h2">1. Information We Collect</h2>
+  <h3 class="privacy-h3">Information you provide directly</h3>
+  <ul>
+    <li>Name, email address, phone number, and job title</li>
+    <li>Company name, industry, and operational details submitted through our intake form</li>
+    <li>Communications you send us via email or contact forms</li>
+  </ul>
+  <h3 class="privacy-h3">Information collected automatically</h3>
+  <ul>
+    <li>IP address, browser type, and device information</li>
+    <li>Pages visited, time on site, and referring URLs</li>
+    <li>Cookies and similar tracking technologies</li>
+  </ul>
+
+  <h2 class="privacy-h2">2. How We Use Your Information</h2>
+  <p>We use the information we collect to:</p>
+  <ul>
+    <li>Evaluate your business for potential AI workflow implementation</li>
+    <li>Communicate with you about our services, proposals, and project work</li>
+    <li>Improve our website and service offerings</li>
+    <li>Comply with legal obligations</li>
+  </ul>
+
+  <h2 class="privacy-h2">3. AI Processing Disclosure</h2>
+  <p>Reystone uses artificial intelligence tools as part of our internal operations and client intake process. When you submit information through our intake form or engage with our services, that information may be processed by AI systems including but not limited to:</p>
+  <ul>
+    <li>Claude API (Anthropic)</li>
+    <li>GPT-4o (OpenAI)</li>
+    <li>Perplexity API</li>
+    <li>Gemma 4 (Google)</li>
+    <li>OpenClaw (OpenAI)</li>
+    <li>n8n workflow automation (self-hosted)</li>
+  </ul>
+  <p>This AI processing is used to research your business, personalize your intake experience, and prepare our team for discovery conversations. We do not use your information to train third-party AI models. All AI processing is conducted in accordance with our confidentiality obligations.</p>
+
+  <h2 class="privacy-h2">4. Information Sharing</h2>
+  <p>We do not sell your personal information. We may share information with:</p>
+  <ul>
+    <li>Service providers who assist in delivering our services (e.g., Google Workspace for communications, AI API providers listed above)</li>
+    <li>Legal authorities when required by law or to protect our rights</li>
+    <li>Successor entities in the event of a business transfer or acquisition</li>
+  </ul>
+  <p>All third-party service providers are contractually required to protect your information and use it only for the purposes we specify.</p>
+
+  <h2 class="privacy-h2">5. Data Retention</h2>
+  <p>We retain your information for as long as necessary to fulfill the purposes outlined in this policy, maintain our business records, and comply with applicable legal requirements. Client project information is retained for a minimum of five (5) years following project completion.</p>
+
+  <h2 class="privacy-h2">6. Your Rights</h2>
+  <p>Depending on your location, you may have the right to:</p>
+  <ul>
+    <li>Access the personal information we hold about you</li>
+    <li>Request correction of inaccurate information</li>
+    <li>Request deletion of your information, subject to legal and contractual obligations</li>
+    <li>Opt out of marketing communications at any time</li>
+    <li>Lodge a complaint with your local data protection authority</li>
+  </ul>
+  <p>To exercise any of these rights, contact us at: <a href="mailto:hey@reystone.ai">hey@reystone.ai</a></p>
+
+  <h2 class="privacy-h2">7. California Residents (CCPA)</h2>
+  <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA), including the right to know what personal information we collect, the right to delete your personal information, and the right to opt out of the sale of personal information. We do not sell personal information. To submit a CCPA request, contact <a href="mailto:pia@reystone.ai">pia@reystone.ai</a>.</p>
+
+  <h2 class="privacy-h2">8. International Visitors (GDPR)</h2>
+  <p>If you are located in the European Economic Area (EEA), United Kingdom, or Switzerland, we process your personal information on the legal bases of legitimate interests, contract performance, and consent where applicable. You have the right to access, rectify, erase, restrict, or port your data, and to object to processing. Contact <a href="mailto:pia@reystone.ai">pia@reystone.ai</a> with any requests.</p>
+
+  <h2 class="privacy-h2">9. Cookies</h2>
+  <p>Our website may use cookies and similar tracking technologies to improve your experience. You may adjust your browser settings to decline cookies, though this may affect certain site functionality. Where required by law, we will request your consent before placing non-essential cookies.</p>
+
+  <h2 class="privacy-h2">10. Security</h2>
+  <p>We implement reasonable technical and organizational measures to protect your information from unauthorized access, disclosure, alteration, or destruction. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
+
+  <h2 class="privacy-h2">11. Children's Privacy</h2>
+  <p>Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If you believe we have inadvertently collected such information, please contact us immediately at <a href="mailto:pia@reystone.ai">pia@reystone.ai</a>.</p>
+
+  <h2 class="privacy-h2">12. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy from time to time. When we do, we will revise the Effective Date at the top of this page. We encourage you to review this policy periodically. Continued use of our website or services after any changes constitutes your acceptance of the updated policy.</p>
+
+  <h2 class="privacy-h2">13. Contact Us</h2>
+  <p>If you have any questions about this Privacy Policy or how we handle your information, please contact us:</p>
+  <div class="privacy-contact-block">
+    <p><strong>Reystone LLC</strong></p>
+    <p>Email: <a href="mailto:pia@reystone.ai">pia@reystone.ai</a></p>
+    <p>Website: <a href="https://reystone.ai">reystone.ai</a></p>
+    <p>Houston, Texas</p>
+    <p>Registered in Wyoming.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="index.html" class="footer-logo"><svg viewBox="0 0 3241 670" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="ReyStone"><path d="M3.2001 484C37.6001 479.2 57.6001 466.4 61.6001 435.2L104 87.2001C108 56.0001 91.2001 43.2001 57.6001 38.4001L60.8001 12.8001H308.8C413.6 12.8001 479.2 54.4001 479.2 129.6C479.2 205.6 427.2 260 347.2 271.2C341.6 272 340.8 279.2 345.6 280.8C389.6 295.2 410.4 320.8 424 382.4C436 435.2 444 483.2 480 483.2L476 509.6H435.2C348.8 509.6 329.6 468 306.4 373.6C292 312.8 272.8 292 227.2 292C192.8 292 180 305.6 176.8 336L164.8 435.2C160.8 466.4 177.6 479.2 219.2 484L216 509.6H9.76771e-05L3.2001 484ZM192 211.2C188 242.4 197.6 256 228.8 256H262.4C332.8 256 372.8 202.4 372.8 131.2C372.8 84.8001 353.6 45.6001 296 45.6001H260.8C222.4 45.6001 211.2 61.6001 207.2 90.4001L192 211.2ZM681.544 514.4C594.344 514.4 522.344 454.4 522.344 356C522.344 258.4 592.744 140 723.944 140C802.344 140 843.144 181.6 843.144 236C843.144 295.2 794.344 332.8 685.544 352L649.544 358.4C627.144 362.4 620.744 380.8 632.744 405.6C648.744 439.2 678.344 462.4 723.144 462.4C751.944 462.4 783.144 452.8 806.344 428.8L821.544 448.8C799.944 475.2 751.944 514.4 681.544 514.4ZM613.544 306.4C613.544 328 625.544 337.6 647.944 334.4L663.944 332C754.344 318.4 761.544 266.4 761.544 236C761.544 186.4 740.744 168.8 707.944 168.8C647.144 168.8 613.544 232.8 613.544 306.4ZM843.675 669.6C810.075 669.6 782.875 646.4 782.875 610.4C782.875 580 802.875 555.2 834.875 555.2C888.475 555.2 854.075 616.8 893.275 616.8C923.675 616.8 974.875 573.6 1014.08 521.6L943.675 231.2C934.875 194.4 912.475 180 882.075 195.2L885.275 171.2C912.475 148.8 940.475 143.2 959.675 143.2C1002.88 143.2 1024.48 172 1035.68 221.6L1080.48 421.6C1083.68 434.4 1091.68 436.8 1099.68 425.6C1142.08 366.4 1168.48 311.2 1182.88 270.4C1207.68 199.2 1165.28 180 1129.28 195.2L1132.48 171.2C1157.28 153.6 1183.68 143.2 1205.28 143.2C1258.08 143.2 1251.68 203.2 1231.68 248C1166.08 394.4 958.075 669.6 843.675 669.6ZM1445.05 517.6C1377.85 517.6 1318.65 496 1287.45 469.6C1272.25 412.8 1278.65 341.6 1313.85 341.6C1322.65 341.6 1325.05 345.6 1328.25 359.2C1346.65 438.4 1400.25 482.4 1463.45 482.4C1522.65 482.4 1555.45 448 1555.45 403.2C1555.45 345.6 1501.05 326.4 1441.05 306.4C1369.05 282.4 1308.25 238.4 1308.25 159.2C1308.25 62.4001 1396.25 7.82013e-05 1507.45 7.82013e-05C1561.85 7.82013e-05 1621.85 16.0001 1650.65 40.0001C1665.05 96.8001 1658.65 168 1624.25 168C1614.65 168 1611.45 164 1609.05 150.4C1595.45 72.8001 1539.45 33.6001 1486.65 33.6001C1436.25 33.6001 1402.65 69.6001 1402.65 116C1402.65 167.2 1442.65 188.8 1499.45 208C1567.45 231.2 1657.85 262.4 1657.85 360C1657.85 465.6 1556.25 517.6 1445.05 517.6ZM1868.17 513.6C1802.57 513.6 1760.97 478.4 1760.97 405.6V210.4C1760.97 185.6 1754.57 180.8 1739.37 180.8H1702.57V158.4C1759.37 142.4 1788.97 114.4 1814.57 71.2001C1819.37 63.2001 1824.17 60.8001 1832.17 60.8001H1843.37C1852.17 60.8001 1857.77 66.4001 1857.77 75.2001L1856.97 127.2C1856.97 144 1864.17 148.8 1902.57 148.8H1958.57V185.6L1902.57 182.4C1864.17 180 1856.97 187.2 1856.97 212V399.2C1856.97 444.8 1863.37 474.4 1902.57 474.4C1916.97 474.4 1932.17 470.4 1944.97 460C1955.37 471.2 1956.97 480.8 1949.77 487.2C1932.97 502.4 1904.97 513.6 1868.17 513.6ZM2187.04 514.4C2088.64 514.4 1995.04 450.4 1995.04 327.2C1995.04 204 2088.64 141.6 2186.24 141.6C2284.64 141.6 2378.24 205.6 2378.24 328.8C2378.24 452 2284.64 514.4 2187.04 514.4ZM2098.24 294.4C2098.24 396 2139.84 484 2203.04 484C2244.64 484 2275.04 447.2 2275.04 360.8C2275.04 260 2234.24 172 2170.24 172C2127.84 172 2098.24 208.8 2098.24 294.4ZM2789.68 514.4C2748.08 514.4 2717.68 491.2 2717.68 440V295.2C2717.68 240 2690.48 197.6 2640.88 197.6C2590.48 197.6 2561.68 240 2561.68 295.2V433.6C2561.68 470.4 2575.28 481.6 2612.08 484.8V509.6H2414.48V484.8C2452.08 481.6 2465.68 470.4 2465.68 433.6V232C2465.68 195.2 2450.48 185.6 2414.48 188.8V164L2526.48 143.2C2549.68 139.2 2561.68 149.6 2561.68 168C2561.68 196.8 2574.48 204 2584.88 192C2601.68 172 2632.08 140 2695.28 140C2754.48 140 2813.68 168.8 2813.68 276.8V440C2813.68 467.2 2827.28 478.4 2850.48 471.2V485.6C2840.08 506.4 2813.68 514.4 2789.68 514.4ZM3079.24 514.4C2979.24 514.4 2886.44 451.2 2886.44 329.6C2886.44 204 2984.04 141.6 3084.04 141.6C3167.24 141.6 3228.04 184.8 3228.04 250.4C3228.04 314.4 3171.24 324.8 3082.44 330.4L3016.04 334.4C3001.64 335.2 2995.24 342.4 2995.24 360C2995.24 419.2 3056.84 460 3124.04 460C3155.24 460 3193.64 451.2 3221.64 417.6L3240.84 434.4C3225.64 464 3168.84 514.4 3079.24 514.4ZM2990.44 276C2990.44 300.8 2997.64 308.8 3016.84 308L3058.44 305.6C3122.44 301.6 3138.44 288 3138.44 251.2C3138.44 210.4 3119.24 172 3071.24 172C3011.24 172 2990.44 231.2 2990.44 276Z" fill="currentColor"/></svg></a>
+      <p class="footer-desc">Bringing six figures (back) into businesses.</p>
+      <a href="https://calendly.com/piavanrey" target="_blank" class="btn-navy footer-cta-btn" style="font-size:10px;display:inline-block;margin-top:8px;">Book Discovery Meeting →</a>
+    </div>
+    <div>
+      <div class="footer-col-label">NAVIGATE</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#process">Our Method</a>
+        <a href="index.html#why">Why Now</a>
+        <a href="index.html#thegap">The Gap</a>
+        <a href="privacypolicy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-label">CONTACT</div>
+      <div class="footer-links">
+        <a href="mailto:pia@reystone.ai?subject=Inquiry%20-%20I'd%20like%20to%20learn%20more%20about%20Reystone">pia@reystone.ai</a>
+        <a href="https://calendly.com/piavanrey" target="_blank">Book Discovery Meeting</a>
+      </div>
+      <div class="footer-col-label" style="margin-top:28px;">HOUSTON, TX</div>
+    </div>
+  </div>
+  <div style="max-width:1120px;margin:24px auto 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:24px;border-top:1px solid rgba(18,24,90,0.06);">
+    <p class="footer-copy" style="margin:0;">© 2026 Reystone AI Consultancy · Houston, Texas · Built by humans, powered by AI</p>
+    <a href="https://www.linkedin.com/company/reystoneai" target="_blank" rel="noopener noreferrer" aria-label="Reystone AI on LinkedIn" style="display:inline-flex;align-items:center;justify-content:center;opacity:0.4;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='0.4'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="24" height="24" rx="4" fill="var(--navy)"/>
+        <path d="M7.5 9.5H5V19H7.5V9.5Z" fill="var(--cream)"/>
+        <circle cx="6.25" cy="6.75" r="1.5" fill="var(--cream)"/>
+        <path d="M19 13.5C19 11.567 17.433 10 15.5 10C14.4 10 13.42 10.52 12.77 11.33V9.5H10.27V19H12.77V14C12.77 12.895 13.665 12 14.77 12C15.875 12 16.77 12.895 16.77 14V19H19.27V13.5H19Z" fill="var(--cream)"/>
+      </svg>
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>
