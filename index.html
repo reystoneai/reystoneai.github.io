@@ -2349,9 +2349,9 @@ function submitContactForm(e){
     <div>
       <div class="footer-col-label">NAVIGATE</div>
       <div class="footer-links">
-        <a href="/" onclick="if(typeof showPage==='function'){showPage('main');return false;}">Our Method</a>
-        <a href="/" onclick="if(typeof showPage==='function'){showPage('main');return false;}">Why Now</a>
-        <a href="/" onclick="if(typeof showPage==='function'){showPage('main');return false;}">The Gap</a>
+        <a href="#process" onclick="if(typeof showPage==='function'){showPage('main');}setTimeout(function(){var el=document.getElementById('process');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},50);return false;">Our Method</a>
+        <a href="#why" onclick="if(typeof showPage==='function'){showPage('main');}setTimeout(function(){var el=document.getElementById('why');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},50);return false;">Why Now</a>
+        <a href="#thegap" onclick="if(typeof showPage==='function'){showPage('main');}setTimeout(function(){var el=document.getElementById('thegap');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},50);return false;">The Gap</a>
         <a href="privacypolicy.html">Privacy Policy</a>
       </div>
     </div>
